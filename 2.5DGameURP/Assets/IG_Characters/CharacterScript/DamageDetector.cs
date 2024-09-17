@@ -91,6 +91,7 @@ namespace IndieGameDev
             info.CurrentHits++;
             control.GetComponent<BoxCollider>().enabled = false;
             control.RIGID_BODY.useGravity = false;
+            CameraManager.Instance.ShakeCamera(.3f);
         }
     }
 
