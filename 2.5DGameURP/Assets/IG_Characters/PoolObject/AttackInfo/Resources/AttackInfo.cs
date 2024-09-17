@@ -10,6 +10,7 @@ namespace IndieGameDev
         public Attack AttackAbility;
         public List<string> CollidingNames = new List<string>();
         public bool MustCollide;
+        public bool LaunchIntoAir;
         public bool MustFaceAttacker;
         public float LethalRange;
         public int MaxHits;
@@ -30,6 +31,7 @@ namespace IndieGameDev
             isRegistered = true;
 
             AttackAbility = attack;
+            LaunchIntoAir = attack.LaunchIntoAir;
             CollidingNames = attack.ColliderNames;
             MustCollide = attack.MustCollide;
             MustFaceAttacker = attack.MustFaceAttacker;

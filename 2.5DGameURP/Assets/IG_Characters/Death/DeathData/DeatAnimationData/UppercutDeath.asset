@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5be196e5951234daaa71ee783db634, type: 3}
-  m_Name: General_GroundDetector
+  m_Script: {fileID: 11500000, guid: 90bba394d695e7c4d95704574884ce50, type: 3}
+  m_Name: UppercutDeath
   m_EditorClassIdentifier: 
-  CheckTime: 0.01
-  Distance: 0.3
+  DamageBodyParts: 
+  LaunchIntoAir: 1
+  AnimatorController: {fileID: 9100000, guid: 7a68843df969eb7468ad794e763b950a, type: 2}
+  IsFacing: 0

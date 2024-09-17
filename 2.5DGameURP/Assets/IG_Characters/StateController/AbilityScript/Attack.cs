@@ -10,12 +10,13 @@ namespace IndieGameDev
         public float StartAttackTime;
         public float EndTimeAttack;
         public List<string> ColliderNames = new List<string>();
+        public bool LaunchIntoAir;
         public bool MustCollide;
         public bool MustFaceAttacker;
         public float LethalRange;
         public int Maxhits;
         //public List<RuntimeAnimatorController> DeathAnimators = new List<RuntimeAnimatorController>();
-        public List<AttackInfo> FinishedAttack = new List<AttackInfo>();
+        private List<AttackInfo> FinishedAttack = new List<AttackInfo>();
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -38,6 +39,7 @@ namespace IndieGameDev
         {
             RegisteredAttack(characterControl, stateInfo);
             DeRegistered(characterControl, stateInfo);
+            CheckCombo(characterControl, animator, stateInfo);
         }
 
         public void RegisteredAttack(CharacterControl characterControl, AnimatorStateInfo stateInfo)
@@ -79,6 +81,20 @@ namespace IndieGameDev
             }
         }
 
+        public void CheckCombo(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
+        {
+            if (stateInfo.normalizedTime >= StartAttackTime + ((EndTimeAttack - StartAttackTime) / 3))
+            {
+                if (stateInfo.normalizedTime < EndTimeAttack + ((EndTimeAttack - StartAttackTime) / 2f))
+                {
+                    if (characterControl.Attack)
+                    {
+                        animator.SetBool(TransitionParameters.Attack.ToString(), true);
+                    }
+                }
+            }
+        }
+
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             ClearAttack();
@@ -90,7 +106,7 @@ namespace IndieGameDev
 
             foreach (AttackInfo info in AttackManager.Instance.CurrentAttacks)
             {
-                if (null == info || info.isFinished)
+                if (null == info || this == info.AttackAbility /*info.isFinished*/)
                 {
                     FinishedAttack.Add(info);
                 }

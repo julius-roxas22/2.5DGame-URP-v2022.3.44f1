@@ -51,7 +51,10 @@ namespace IndieGameDev
                     Debug.DrawRay(o.transform.position, Vector3.down * Distance, Color.red);
                     if (Physics.Raycast(o.transform.position, Vector3.down, out hit, Distance))
                     {
-                        return true;
+                        if (!control.RagdollParts.Contains(hit.collider))
+                        {
+                            return true;
+                        }
                     }
                 }
             }

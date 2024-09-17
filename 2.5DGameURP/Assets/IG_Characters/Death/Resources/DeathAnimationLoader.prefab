@@ -47,3 +47,4 @@ MonoBehaviour:
   DeathData:
   - {fileID: 11400000, guid: 2961828e003cd48459c5392eaa09d4d0, type: 2}
   - {fileID: 11400000, guid: 26566584dda3cd349a698ef19b3993e4, type: 2}
+  - {fileID: 11400000, guid: a74f2f995f08f9e4aa3302aa4603b9ce, type: 2}

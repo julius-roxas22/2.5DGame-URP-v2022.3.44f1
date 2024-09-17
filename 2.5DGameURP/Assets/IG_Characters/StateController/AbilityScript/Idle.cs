@@ -46,7 +46,7 @@ namespace IndieGameDev
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-
+            animator.SetBool(TransitionParameters.Attack.ToString(), false);
         }
     }
 }
