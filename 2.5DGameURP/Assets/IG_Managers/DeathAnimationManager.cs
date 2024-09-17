@@ -33,6 +33,17 @@ namespace IndieGameDev
                         break;
                     }
                 }
+                else if (!info.MustCollide)
+                {
+                    foreach (GeneralBodyParts body in data.DamageBodyParts)
+                    {
+                        if (body.Equals(GeneralBodyParts.LOWER) || body.Equals(GeneralBodyParts.LEG))
+                        {
+                            Candidates.Add(data.AnimatorController);
+                            break;
+                        }
+                    }
+                }
                 else
                 {
                     foreach (GeneralBodyParts body in data.DamageBodyParts)

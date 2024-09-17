@@ -15,8 +15,8 @@ namespace IndieGameDev
         public bool MustFaceAttacker;
         public float LethalRange;
         public int Maxhits;
-        //public List<RuntimeAnimatorController> DeathAnimators = new List<RuntimeAnimatorController>();
         private List<AttackInfo> FinishedAttack = new List<AttackInfo>();
+        public bool debug;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -56,6 +56,10 @@ namespace IndieGameDev
                     if (this == info.AttackAbility && !info.isRegistered)
                     {
                         info.RegisterAttack(this);
+                        //if (debug)
+                        //{
+                        //    Debug.Log(info.AttackAbility.name + " registerd " + stateInfo.normalizedTime);
+                        //}
                     }
                 }
             }
@@ -76,6 +80,10 @@ namespace IndieGameDev
                     {
                         info.isFinished = true;
                         info.GetComponent<PoolObject>().TurnOff();
+                        if (debug)
+                        {
+                            Debug.Log(info.AttackAbility.name + " de-registerd " + stateInfo.normalizedTime);
+                        }
                     }
                 }
             }
@@ -97,6 +105,7 @@ namespace IndieGameDev
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
+            animator.SetBool(TransitionParameters.Attack.ToString(), false);
             ClearAttack();
         }
 
@@ -120,12 +129,6 @@ namespace IndieGameDev
                 }
             }
         }
-
-        //public RuntimeAnimatorController GetDeathAnimatorController()
-        //{
-        //    int index = Random.Range(0, DeathAnimators.Count);
-        //    return DeathAnimators[index];
-        //}
     }
 }
 

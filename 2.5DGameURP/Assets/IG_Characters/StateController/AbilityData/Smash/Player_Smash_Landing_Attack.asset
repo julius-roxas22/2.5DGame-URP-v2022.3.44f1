@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aabf3acad62862546858512ca90b1ba5, type: 3}
-  m_Name: Player_Uppercut_Attack
+  m_Name: Player_Smash_Landing_Attack
   m_EditorClassIdentifier: 
-  StartAttackTime: 0.2
-  EndTimeAttack: 0.5
-  ColliderNames:
-  - mixamorig:RightHand
-  LaunchIntoAir: 1
-  MustCollide: 1
+  StartAttackTime: 0.5
+  EndTimeAttack: 0.8
+  ColliderNames: []
+  LaunchIntoAir: 0
+  MustCollide: 0
   MustFaceAttacker: 0
-  LethalRange: 0
-  Maxhits: 1
+  LethalRange: 2
+  Maxhits: 10
+  debug: 0

@@ -59,6 +59,14 @@ namespace IndieGameDev
                         TakeDamage(info);
                     }
                 }
+                else
+                {
+                    float dist = Vector3.SqrMagnitude(control.transform.position - info.Attacker.transform.position);
+                    if (dist <= info.LethalRange)
+                    {
+                        TakeDamage(info);
+                    }
+                }
             }
         }
 
@@ -90,7 +98,10 @@ namespace IndieGameDev
             control.GetComponent<BoxCollider>().enabled = false;
             control.RIGID_BODY.useGravity = false;
             control.skinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetDeathAnimation(DamagePart, info); //info.AttackAbility.GetDeathAnimatorController();
-            CameraManager.Instance.ShakeCamera(.3f);
+            if (info.MustCollide)
+            {
+                CameraManager.Instance.ShakeCamera(.3f);
+            }
         }
     }
 
