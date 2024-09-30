@@ -9,6 +9,20 @@ namespace IndieGameDev
         private CameraController CamController;
         private Coroutine routine;
 
+        private Camera MainCamera;
+
+        public Camera MAIN_CAMERA
+        {
+            get
+            {
+                if(null == MainCamera)
+                {
+                    MainCamera = FindObjectOfType<Camera>();
+                }
+                return MainCamera;
+            }
+        }
+
         public CameraController GetCamController
         {
             get

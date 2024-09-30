@@ -1633,7 +1633,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c512aa6a7786b84da04017efd2ff967, type: 2}
+  - {fileID: 2100000, guid: 42c0238fcfeac9d47812498720a9296f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1815,6 +1815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130244bc403e42643832db9f94165c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterColorType: 2
   movementSpeed: 2
   skinnedMeshAnimator: {fileID: 6823457423520675110}
   mat: {fileID: 2100000, guid: 5e6b9a19c6f54444081a7992c254bc3a, type: 2}
@@ -2419,7 +2420,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef8c3de786eac2845842d0e7cac5226a, type: 2}
+  - {fileID: 2100000, guid: 96a03e12bbc85b34884671e540dd5f37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

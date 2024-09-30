@@ -13,8 +13,15 @@ namespace IndieGameDev
         Attack,
     }
 
+    public enum SceneBuilder
+    {
+        CharacterSelectScene,
+        MainScene
+    }
+
     public class CharacterControl : MonoBehaviour
     {
+        public CharacterColorType characterColorType;
         public float movementSpeed;
         public Animator skinnedMeshAnimator;
         public Material mat;
@@ -25,7 +32,6 @@ namespace IndieGameDev
         public float PullMultiplier;
 
         public List<Collider> RagdollParts = new List<Collider>();
-        //public List<Collider> CollidingParts = new List<Collider>();
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
 
         public bool Jump;
@@ -63,6 +69,16 @@ namespace IndieGameDev
             if (SwitchBack)
             {
                 SetFaceForward(false);
+            }
+
+            RegisterCharacter();
+        }
+
+        private void RegisterCharacter()
+        {
+            if (!CharacterManager.Instance.characters.Contains(this))
+            {
+                CharacterManager.Instance.characters.Add(this);
             }
         }
 
@@ -199,6 +215,11 @@ namespace IndieGameDev
 
         public void SetFaceForward(bool isFacing)
         {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(SceneBuilder.CharacterSelectScene.ToString()))
+            {
+                return;
+            }
+
             if (isFacing)
             {
                 transform.rotation = Quaternion.identity;

@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130244bc403e42643832db9f94165c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterColorType: 1
   movementSpeed: 2
   skinnedMeshAnimator: {fileID: 2506972086265117665}
   mat: {fileID: 2100000, guid: 5e6b9a19c6f54444081a7992c254bc3a, type: 2}
