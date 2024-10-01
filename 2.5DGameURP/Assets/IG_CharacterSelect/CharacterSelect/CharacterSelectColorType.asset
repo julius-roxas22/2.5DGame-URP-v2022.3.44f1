@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decbe4ee8b56eae48838429de57a6374, type: 3}
   m_Name: CharacterSelectColorType
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 1

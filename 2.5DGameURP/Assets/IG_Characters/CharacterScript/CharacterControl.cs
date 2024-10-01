@@ -82,6 +82,18 @@ namespace IndieGameDev
             }
         }
 
+        public Collider FindTargetCameraLimb(string limbName)
+        {
+            foreach(Collider col in RagdollParts)
+            {
+                if (col.gameObject.name.Contains(limbName))
+                {
+                    return col;
+                }
+            }
+            return null;
+        }
+
         public void SetUpRagdollParts()
         {
             RagdollParts.Clear();
