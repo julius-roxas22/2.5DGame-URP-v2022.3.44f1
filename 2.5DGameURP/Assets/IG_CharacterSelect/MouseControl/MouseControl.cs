@@ -42,13 +42,29 @@ namespace IndieGameDev
                 if (characterColorType != CharacterColorType.NONE)
                 {
                     characterSelect.characterType = characterColorType;
-                    selectedLight.spotLight.enabled = true;
                     selectedLight.transform.position = hoverLight.transform.position;
+
+                    CharacterControl characterControl = CharacterManager.Instance.GetCharacterControl(characterSelect.characterType);
+                    selectedLight.transform.parent = characterControl.skinnedMeshAnimator.transform;
+                    selectedLight.spotLight.enabled = true;
+
                 }
                 else
                 {
                     characterSelect.characterType = CharacterColorType.NONE;
                     selectedLight.spotLight.enabled = false;
+                }
+
+                foreach (CharacterControl characterControl in CharacterManager.Instance.characters)
+                {
+                    if (characterControl.characterColorType == characterColorType)
+                    {
+                        characterControl.skinnedMeshAnimator.SetBool(TransitionParameters.ClickAnimation.ToString(), true);
+                    }
+                    else
+                    {
+                        characterControl.skinnedMeshAnimator.SetBool(TransitionParameters.ClickAnimation.ToString(), false);
+                    }
                 }
             }
         }

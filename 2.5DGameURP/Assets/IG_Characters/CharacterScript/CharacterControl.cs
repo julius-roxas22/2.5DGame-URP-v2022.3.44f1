@@ -11,6 +11,7 @@ namespace IndieGameDev
         ForceTransition,
         Grounded,
         Attack,
+        ClickAnimation,
     }
 
     public enum SceneBuilder

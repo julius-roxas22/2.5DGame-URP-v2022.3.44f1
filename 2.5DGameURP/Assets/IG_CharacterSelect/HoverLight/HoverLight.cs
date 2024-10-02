@@ -40,7 +40,8 @@ namespace IndieGameDev
             {
                 characterControlPos = CharacterManager.Instance.GetCharacterControl(mouseControlPos.characterColorType);
                 //transform.position = characterControlPos.transform.position + characterControlPos.transform.TransformDirection(offset);
-                transform.position = characterControlPos.transform.position + offset;
+                transform.position = characterControlPos.skinnedMeshAnimator.transform.position + offset;
+                transform.parent = characterControlPos.skinnedMeshAnimator.transform;
             }
         }
     }
