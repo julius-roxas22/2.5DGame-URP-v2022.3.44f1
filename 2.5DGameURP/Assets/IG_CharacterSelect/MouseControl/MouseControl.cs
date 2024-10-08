@@ -12,12 +12,17 @@ namespace IndieGameDev
         private RaycastHit hit;
         private SelectedLight selectedLight;
         private HoverLight hoverLight;
+        private GameObject RingLight;
+        private CharacterSelectCameraController CamController;
 
         private void Awake()
         {
             characterSelect.characterType = CharacterColorType.NONE;
             selectedLight = FindObjectOfType<SelectedLight>();
             hoverLight = FindObjectOfType<HoverLight>();
+            RingLight = GameObject.Find("RingLight");
+            RingLight.SetActive(false);
+            CamController = FindObjectOfType<CharacterSelectCameraController>();
         }
 
         private void Update()
@@ -48,11 +53,16 @@ namespace IndieGameDev
                     selectedLight.transform.parent = characterControl.skinnedMeshAnimator.transform;
                     selectedLight.spotLight.enabled = true;
 
+                    RingLight.SetActive(true);
+                    RingLight.transform.parent = characterControl.skinnedMeshAnimator.transform;
+                    RingLight.transform.localPosition = Vector3.zero;
+                    RingLight.transform.localRotation = Quaternion.identity;
                 }
                 else
                 {
                     characterSelect.characterType = CharacterColorType.NONE;
                     selectedLight.spotLight.enabled = false;
+                    RingLight.SetActive(false);
                 }
 
                 foreach (CharacterControl characterControl in CharacterManager.Instance.characters)
@@ -66,6 +76,7 @@ namespace IndieGameDev
                         characterControl.skinnedMeshAnimator.SetBool(TransitionParameters.ClickAnimation.ToString(), false);
                     }
                 }
+                CamController.SwitchCameraSelected(characterSelect.characterType);
             }
         }
     }
