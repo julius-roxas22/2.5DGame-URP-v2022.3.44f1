@@ -19,6 +19,8 @@ namespace IndieGameDev
             control.MoveLeft = VirtualInputManager.Instance.MoveLeft ? true : false;
             control.Jump = VirtualInputManager.Instance.Jump ? true : false;
             control.Attack = VirtualInputManager.Instance.Attack ? true : false;
+            control.MoveUp = VirtualInputManager.Instance.MoveUp ? true : false;
+            control.MoveDown = VirtualInputManager.Instance.MoveDown ? true : false;
         }
     }
 }

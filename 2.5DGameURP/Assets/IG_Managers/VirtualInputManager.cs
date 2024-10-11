@@ -10,6 +10,8 @@ namespace IndieGameDev
         public bool MoveLeft;
         public bool Jump;
         public bool Attack;
+        public bool MoveUp;
+        public bool MoveDown;
     }
 }
 

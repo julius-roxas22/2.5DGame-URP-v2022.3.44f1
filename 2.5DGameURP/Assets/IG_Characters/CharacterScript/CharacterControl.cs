@@ -12,6 +12,7 @@ namespace IndieGameDev
         Grounded,
         Attack,
         ClickAnimation,
+        TransitionIndex,
     }
 
     public enum SceneBuilder
@@ -31,6 +32,7 @@ namespace IndieGameDev
         public List<GameObject> FrontSpheres = new List<GameObject>();
         public float GravityMultiplier;
         public float PullMultiplier;
+        public LedgeChecker ledgeChecker;
 
         public List<Collider> RagdollParts = new List<Collider>();
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
@@ -39,6 +41,8 @@ namespace IndieGameDev
         public bool MoveRight;
         public bool MoveLeft;
         public bool Attack;
+        public bool MoveUp;
+        public bool MoveDown;
 
         private Rigidbody rigid;
 
@@ -56,6 +60,8 @@ namespace IndieGameDev
 
         private void Awake()
         {
+            ledgeChecker = GetComponentInChildren<LedgeChecker>();
+
             bool SwitchBack = false;
 
             if (!IsFacingForward())
@@ -85,7 +91,7 @@ namespace IndieGameDev
 
         public Collider FindTargetCameraLimb(string limbName)
         {
-            foreach(Collider col in RagdollParts)
+            foreach (Collider col in RagdollParts)
             {
                 if (col.gameObject.name.Contains(limbName))
                 {

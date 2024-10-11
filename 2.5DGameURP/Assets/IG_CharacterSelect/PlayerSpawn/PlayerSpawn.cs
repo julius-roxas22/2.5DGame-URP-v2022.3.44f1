@@ -46,10 +46,5 @@ namespace IndieGameDev
                 cam.Follow = target;
             }
         }
-
-        void Update()
-        {
-
-        }
     }
 }
