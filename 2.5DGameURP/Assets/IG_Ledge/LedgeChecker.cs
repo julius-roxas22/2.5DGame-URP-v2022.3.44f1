@@ -6,20 +6,27 @@ namespace IndieGameDev
 {
     public class LedgeChecker : MonoBehaviour
     {
-        private Ledge ledge = null;
+        private Ledge CheckLedge = null;
+        public Ledge GrabbLedge;
         public bool IsGrabbingLedge;
         private void OnTriggerEnter(Collider other)
         {
-            ledge = other.gameObject.GetComponent<Ledge>();
-            if (null != ledge)
+            CheckLedge = other.gameObject.GetComponent<Ledge>();
+            if (null != CheckLedge)
             {
+                GrabbLedge = CheckLedge;
                 IsGrabbingLedge = true;
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            IsGrabbingLedge = false;
+            CheckLedge = other.gameObject.GetComponent<Ledge>();
+            if (null != CheckLedge)
+            {
+                //GrabbLedge = null;
+                IsGrabbingLedge = false;
+            }
         }
     }
 }

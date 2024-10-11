@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb497c559ba064a4e894b8bfb409c0d6, type: 3}
   m_Name: Player_Jump_Move
   m_EditorClassIdentifier: 
-  BlockDistance: 0.5
+  BlockDistance: 0.1
   SpeedGraph:
     serializedVersion: 2
     m_Curve:
@@ -47,3 +47,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Speed: 1.5
+  IsConstantMove: 0
