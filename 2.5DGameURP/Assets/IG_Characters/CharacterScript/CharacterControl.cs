@@ -36,6 +36,7 @@ namespace IndieGameDev
 
         public List<Collider> RagdollParts = new List<Collider>();
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
+        private Dictionary<string, GameObject> ParentObjDictionaries = new Dictionary<string, GameObject>();
 
         public bool Jump;
         public bool MoveRight;
@@ -98,6 +99,27 @@ namespace IndieGameDev
                     return col;
                 }
             }
+            return null;
+        }
+
+        public GameObject GetChildObj(string names)
+        {
+            if (ParentObjDictionaries.ContainsKey(names))
+            {
+                return ParentObjDictionaries[names];
+            }
+
+            Transform[] arr = GetComponentsInChildren<Transform>();
+
+            foreach (Transform t in arr)
+            {
+                if (t.gameObject.name.Equals(names))
+                {
+                    ParentObjDictionaries.Add(names, t.gameObject);
+                    return t.gameObject;
+                }
+            }
+
             return null;
         }
 

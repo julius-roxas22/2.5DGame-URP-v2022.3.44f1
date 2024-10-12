@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e08ac851209f5374a95d754ae2a1928e, type: 3}
-  m_Name: Player_HammerDown_SpawnObject
+  m_Name: Player_HammerDown_SpawnObject - Hammer
   m_EditorClassIdentifier: 
   SpawnTiming: 0.3
+  ParentObjName: WeaponPosition
+  poolObjectType: 1
+  StickToParent: 1

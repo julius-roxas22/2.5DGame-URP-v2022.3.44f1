@@ -25,6 +25,9 @@ namespace IndieGameDev
 
         public void TurnOff()
         {
+            transform.parent = null;
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.identity;
             PoolManager.Instance.AddObject(this);
         }
 

@@ -97,4 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
-  ScheduledTime: 0.2
+  ScheduledTime: 0.45

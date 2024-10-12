@@ -9,7 +9,12 @@ namespace IndieGameDev
     {
         [Range(0f, 1f)]
         [SerializeField] private float SpawnTiming;
+        [SerializeField] private string ParentObjName = string.Empty;
+        [SerializeField] private PoolObjectType poolObjectType;
+        [SerializeField] private bool StickToParent;
+
         private bool IsSpawned;
+
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             if (SpawnTiming == 0f)
@@ -35,11 +40,21 @@ namespace IndieGameDev
 
         private void SpawnObj(CharacterControl characterControl)
         {
-            GameObject obj = PoolManager.Instance.InstantiatePrefab(PoolObjectType.HAMMER);
-            WeaponSpawn weaponSpawn = characterControl.GetComponentInChildren<WeaponSpawn>();
-            obj.transform.parent = weaponSpawn.transform;
-            obj.transform.position = weaponSpawn.transform.position;
-            obj.transform.rotation = weaponSpawn.transform.rotation;
+            GameObject obj = PoolManager.Instance.InstantiatePrefab(poolObjectType);
+
+            if (!string.IsNullOrEmpty(ParentObjName))
+            {
+                GameObject getParent = characterControl.GetChildObj(ParentObjName);
+                obj.transform.parent = getParent.transform;
+                obj.transform.localPosition = Vector3.zero;
+                obj.transform.localRotation = Quaternion.identity;
+            }
+
+            if (!StickToParent)
+            {
+                obj.transform.parent = null;
+            }
+
             obj.SetActive(true);
         }
     }

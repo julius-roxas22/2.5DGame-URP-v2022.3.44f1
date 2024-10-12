@@ -8,6 +8,7 @@ namespace IndieGameDev
     {
         ATTACKINFO,
         HAMMER,
+        HAMMERDOWN_VFX
     }
     public class PoolObjectLoader : MonoBehaviour
     {
@@ -24,6 +25,11 @@ namespace IndieGameDev
                 case PoolObjectType.HAMMER:
                     {
                         obj = Instantiate(Resources.Load("Axe", typeof(GameObject))) as GameObject;
+                        break;
+                    }
+                case PoolObjectType.HAMMERDOWN_VFX:
+                    {
+                        obj = Instantiate(Resources.Load("VFX_HammerDown", typeof(GameObject))) as GameObject;
                         break;
                     }
             }
