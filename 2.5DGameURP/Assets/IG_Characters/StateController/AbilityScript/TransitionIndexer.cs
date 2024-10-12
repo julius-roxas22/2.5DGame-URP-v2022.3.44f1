@@ -34,6 +34,10 @@ namespace IndieGameDev
             {
                 animator.SetInteger(TransitionParameters.TransitionIndex.ToString(), index);
             }
+            else
+            {
+                animator.SetInteger(TransitionParameters.TransitionIndex.ToString(), 0);
+            }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)

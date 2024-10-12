@@ -8,6 +8,15 @@ namespace IndieGameDev
     {
         public Vector3 offset;
         public Vector3 endPosition;
+
+        public static bool IsLedge(GameObject obj)
+        {
+            if (null == obj.GetComponent<Ledge>())
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
 
