@@ -25,34 +25,27 @@ namespace IndieGameDev
 
             foreach (DeathAnimationData data in loader.DeathData)
             {
-                if (info.LaunchIntoAir)
+                if (info.deathType.Equals(data.deathType))
                 {
-                    if (data.LaunchIntoAir)
+                    if (info.deathType != DeathType.NONE)
                     {
                         Candidates.Add(data.AnimatorController);
-                        break;
                     }
-                }
-                else if (!info.MustCollide)
-                {
-                    foreach (GeneralBodyParts body in data.DamageBodyParts)
+                    else if (!info.MustCollide)
                     {
-                        if (body.Equals(GeneralBodyParts.LOWER) || body.Equals(GeneralBodyParts.LEG))
-                        {
-                            Candidates.Add(data.AnimatorController);
-                            break;
-                        }
+                        Candidates.Add(data.AnimatorController);
                     }
-                }
-                else
-                {
-                    foreach (GeneralBodyParts body in data.DamageBodyParts)
+                    else
                     {
-                        if (body.Equals(generalBodyParts))
+                        foreach (GeneralBodyParts body in data.DamageBodyParts)
                         {
-                            Candidates.Add(data.AnimatorController);
-                            break;
+                            if (body.Equals(generalBodyParts))
+                            {
+                                Candidates.Add(data.AnimatorController);
+                                break;
+                            }
                         }
+
                     }
                 }
             }

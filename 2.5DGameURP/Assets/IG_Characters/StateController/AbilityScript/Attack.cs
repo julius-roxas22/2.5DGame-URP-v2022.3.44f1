@@ -10,7 +10,7 @@ namespace IndieGameDev
         public float StartAttackTime;
         public float EndTimeAttack;
         public List<string> ColliderNames = new List<string>();
-        public bool LaunchIntoAir;
+        public DeathType deathType;
         public bool MustCollide;
         public bool MustFaceAttacker;
         public float LethalRange;
@@ -56,10 +56,10 @@ namespace IndieGameDev
                     if (this == info.AttackAbility && !info.isRegistered)
                     {
                         info.RegisterAttack(this);
-                        //if (debug)
-                        //{
-                        //    Debug.Log(info.AttackAbility.name + " registerd " + stateInfo.normalizedTime);
-                        //}
+                        if (debug)
+                        {
+                            Debug.Log(info.AttackAbility.name + " registerd " + stateInfo.normalizedTime);
+                        }
                     }
                 }
             }

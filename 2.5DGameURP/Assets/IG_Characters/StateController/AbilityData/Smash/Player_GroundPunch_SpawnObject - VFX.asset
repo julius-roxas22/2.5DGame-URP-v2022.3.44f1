@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90bba394d695e7c4d95704574884ce50, type: 3}
-  m_Name: SoccerTackelDeath
+  m_Script: {fileID: 11500000, guid: e08ac851209f5374a95d754ae2a1928e, type: 3}
+  m_Name: Player_GroundPunch_SpawnObject - VFX
   m_EditorClassIdentifier: 
-  DamageBodyParts: 0100000003000000
-  AnimatorController: {fileID: 9100000, guid: 8f41c849c939f8d4bb7be25be44c8004, type: 2}
-  IsFacing: 0
+  SpawnTiming: 0.42
+  ParentObjName: GroundPunch
+  poolObjectType: 2
+  StickToParent: 0
