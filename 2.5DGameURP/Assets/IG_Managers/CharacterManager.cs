@@ -12,7 +12,16 @@ namespace IndieGameDev
         {
             foreach (CharacterControl character in characters)
             {
-                if (type == character.characterColorType) return character;
+                if (type.Equals(character.characterColorType)) return character;
+            }
+            return null;
+        }
+
+        public CharacterControl GetCharacterControl(Animator animator)
+        {
+            foreach (CharacterControl character in characters)
+            {
+                if (animator.Equals(character.skinnedMeshAnimator)) return character;
             }
             return null;
         }

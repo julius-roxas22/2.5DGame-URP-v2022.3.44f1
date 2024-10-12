@@ -24,7 +24,6 @@ namespace IndieGameDev
             CheckLedge = other.gameObject.GetComponent<Ledge>();
             if (null != CheckLedge)
             {
-                //GrabbLedge = null;
                 IsGrabbingLedge = false;
             }
         }

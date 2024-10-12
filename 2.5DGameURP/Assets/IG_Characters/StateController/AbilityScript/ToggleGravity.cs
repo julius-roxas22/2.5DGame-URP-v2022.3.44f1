@@ -7,7 +7,7 @@ namespace IndieGameDev
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/ToggerGravity")]
     public class ToggerGravity : StateData
     {
-        public bool Toggle;
+        public bool OnEnabled;
         public bool OnStart;
         public bool OnEnd;
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
@@ -34,7 +34,7 @@ namespace IndieGameDev
         private void OnEnableGravity(CharacterControl characterControl)
         {
             characterControl.RIGID_BODY.velocity = Vector3.zero;
-            characterControl.RIGID_BODY.useGravity = Toggle;
+            characterControl.RIGID_BODY.useGravity = OnEnabled;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace IndieGameDev
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-
+            animator.SetInteger(TransitionParameters.TransitionIndex.ToString(), 0);
         }
 
         private bool MakeTransition(CharacterControl characterControl)
@@ -74,6 +74,14 @@ namespace IndieGameDev
                     case TransitionConditionType.RIGHT:
                         {
                             if (!characterControl.MoveRight)
+                            {
+                                return false;
+                            }
+                        }
+                        break;
+                    case TransitionConditionType.JUMP:
+                        {
+                            if (!characterControl.Jump)
                             {
                                 return false;
                             }

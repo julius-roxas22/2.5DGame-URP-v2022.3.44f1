@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bdab07b6fe6995488898ce8e622cd35, type: 3}
-  m_Name: Player_LedgeGrab_ToggleBoxCollider_OFF
+  m_Script: {fileID: 11500000, guid: d13a6b3da6b48934083bc58cc3d7c1a6, type: 3}
+  m_Name: Player_HangingToCrouch_TeloportOnledge
   m_EditorClassIdentifier: 
-  OnEnabled: 0
-  OnStart: 1
-  OnEnd: 0
