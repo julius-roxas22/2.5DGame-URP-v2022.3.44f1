@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player_Walking_TransitionIndexer
   m_EditorClassIdentifier: 
   index: 1
-  ConditionTypes: 05000000
+  ConditionTypes: 0500000007000000

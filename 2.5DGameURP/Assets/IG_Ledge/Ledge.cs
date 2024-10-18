@@ -17,6 +17,15 @@ namespace IndieGameDev
             }
             return true;
         }
+
+        public static bool IsLedgeChecker(GameObject obj)
+        {
+            if (null == obj.GetComponent<LedgeChecker>())
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
 

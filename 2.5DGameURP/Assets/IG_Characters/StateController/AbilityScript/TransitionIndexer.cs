@@ -12,7 +12,8 @@ namespace IndieGameDev
         RIGHT,
         JUMP,
         ATTACK,
-        LEDGE_GRAB
+        LEDGE_GRAB,
+        IS_HAMMER_DOWN_SURFACE
     }
 
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/TransitionIndexer")]
@@ -109,7 +110,6 @@ namespace IndieGameDev
                         break;
                 }
             }
-
             return true;
         }
     }

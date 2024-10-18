@@ -90,11 +90,11 @@ namespace IndieGameDev
                     {
                         if (colName.Equals(col.gameObject.name))
                         {
-                            //if (info.Attacker != control)
-                            //{
-                            //}
-                            DamagePart = trigger.BodyPart;
-                            return true;
+                            if (info.Attacker.gameObject == col.transform.root.gameObject)
+                            {
+                                DamagePart = trigger.BodyPart;
+                                return true;
+                            }
                         }
                     }
                 }
@@ -108,15 +108,18 @@ namespace IndieGameDev
             {
                 return;
             }
-            DamageTaken++;
-            info.CurrentHits++;
-            control.GetComponent<BoxCollider>().enabled = false;
-            control.RIGID_BODY.useGravity = false;
-            control.skinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetDeathAnimation(DamagePart, info); //info.AttackAbility.GetDeathAnimatorController();
+
             if (info.MustCollide)
             {
                 CameraManager.Instance.ShakeCamera(.3f);
             }
+            control.skinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetDeathAnimation(DamagePart, info); //info.AttackAbility.GetDeathAnimatorController();
+            info.CurrentHits++;
+            control.GetComponent<BoxCollider>().enabled = false;
+            control.ledgeChecker.GetComponent<BoxCollider>().enabled = false;
+            control.RIGID_BODY.useGravity = false;
+
+            DamageTaken++;
         }
     }
 

@@ -145,14 +145,6 @@ namespace IndieGameDev
             }
         }
 
-        //private IEnumerator Start()
-        //{
-        //    yield return new WaitForSeconds(5f);
-        //    RIGID_BODY.AddForce(Vector3.up * 200f);
-        //    yield return new WaitForSeconds(0.5f);
-        //    TurnOnRagdoll();
-        //}
-
         public void TurnOnRagdoll()
         {
             RIGID_BODY.velocity = Vector3.zero;
@@ -284,6 +276,7 @@ namespace IndieGameDev
                 return false;
             }
         }
+
     }
 }
 
