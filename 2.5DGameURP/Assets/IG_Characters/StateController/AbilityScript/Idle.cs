@@ -24,7 +24,7 @@ namespace IndieGameDev
                 return;
             }
 
-            if (characterControl.Attack)
+            if (characterControl.AnimProgress.AttackTriggered /*characterControl.Attack*/)
             {
                 animator.SetBool(TransitionParameters.Attack.ToString(), true);
             }

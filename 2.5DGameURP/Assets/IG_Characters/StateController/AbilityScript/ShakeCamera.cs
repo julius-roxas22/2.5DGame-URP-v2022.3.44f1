@@ -9,28 +9,28 @@ namespace IndieGameDev
     {
         [Range(0f, 1f)]
         [SerializeField] private float ShakeTiming;
-        private bool IsShaking;
+
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             if (ShakeTiming == 0f)
             {
                 CameraManager.Instance.ShakeCamera(.3f);
-                IsShaking = true;
+                characterControl.AnimProgress.CameraShaken = true;
             }
         }
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (!IsShaking && stateInfo.normalizedTime >= ShakeTiming)
+            if (!characterControl.AnimProgress.CameraShaken && stateInfo.normalizedTime >= ShakeTiming)
             {
                 CameraManager.Instance.ShakeCamera(.3f);
-                IsShaking = true;
+                characterControl.AnimProgress.CameraShaken = true;
             }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            IsShaking = false;
+            characterControl.AnimProgress.CameraShaken = false;
         }
     }
 }

@@ -33,6 +33,7 @@ namespace IndieGameDev
         public float GravityMultiplier;
         public float PullMultiplier;
         public LedgeChecker ledgeChecker;
+        public AnimationProgress AnimProgress;
 
         public List<Collider> RagdollParts = new List<Collider>();
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
@@ -62,6 +63,7 @@ namespace IndieGameDev
         private void Awake()
         {
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
+            AnimProgress = GetComponent<AnimationProgress>();
 
             bool SwitchBack = false;
 

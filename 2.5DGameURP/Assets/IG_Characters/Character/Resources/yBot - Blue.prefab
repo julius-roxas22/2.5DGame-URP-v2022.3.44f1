@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 9117049964211060120}
   - component: {fileID: 3092976030782816588}
   - component: {fileID: 8411816606039489602}
+  - component: {fileID: 1482053081579892555}
   m_Layer: 0
   m_Name: yBot - Blue
   m_TagString: Untagged
@@ -509,6 +510,7 @@ MonoBehaviour:
   GravityMultiplier: 0
   PullMultiplier: 0
   ledgeChecker: {fileID: 0}
+  AnimProgress: {fileID: 0}
   RagdollParts:
   - {fileID: 2712935652426262525}
   - {fileID: 2987272719380664585}
@@ -553,6 +555,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f89c90abe42d5429318964c4d04278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageTaken: 0
+--- !u!114 &1482053081579892555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869473416010315978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01dd7aa79a6fb424eaadc6920b2ccd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Jumped: 0
+  CameraShaken: 0
+  PoolObjectList: 
+  AttackTriggered: 0
+  MaxPressTime: 0.1
 --- !u!1 &1018023840305489731
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,7 +93,7 @@ namespace IndieGameDev
                         break;
                     case TransitionConditionType.ATTACK:
                         {
-                            if (!characterControl.Attack)
+                            if (!characterControl.AnimProgress.AttackTriggered /*characterControl.Attack*/)
                             {
                                 return false;
                             }

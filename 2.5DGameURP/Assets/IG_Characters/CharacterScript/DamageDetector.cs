@@ -9,6 +9,7 @@ namespace IndieGameDev
     {
         private CharacterControl control;
         private GeneralBodyParts DamagePart;
+        public int DamageTaken;
 
         private void Awake()
         {
@@ -103,6 +104,11 @@ namespace IndieGameDev
 
         private void TakeDamage(AttackInfo info)
         {
+            if (DamageTaken > 0)
+            {
+                return;
+            }
+            DamageTaken++;
             info.CurrentHits++;
             control.GetComponent<BoxCollider>().enabled = false;
             control.RIGID_BODY.useGravity = false;

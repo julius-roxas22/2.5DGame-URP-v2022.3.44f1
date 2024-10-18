@@ -15,7 +15,7 @@ namespace IndieGameDev
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (characterControl.Attack)
+            if (characterControl.AnimProgress.AttackTriggered /*characterControl.Attack*/)
             {
                 animator.SetBool(TransitionParameters.Attack.ToString(), true);
             }

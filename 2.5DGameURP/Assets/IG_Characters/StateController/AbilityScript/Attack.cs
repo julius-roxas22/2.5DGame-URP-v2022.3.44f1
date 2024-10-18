@@ -95,7 +95,7 @@ namespace IndieGameDev
             {
                 if (stateInfo.normalizedTime < EndTimeAttack + ((EndTimeAttack - StartAttackTime) / 2f))
                 {
-                    if (characterControl.Attack)
+                    if (characterControl.AnimProgress.AttackTriggered /*characterControl.Attack*/)
                     {
                         animator.SetBool(TransitionParameters.Attack.ToString(), true);
                     }

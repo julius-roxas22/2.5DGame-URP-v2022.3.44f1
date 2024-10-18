@@ -11,7 +11,6 @@ namespace IndieGameDev
         [SerializeField] private float JumpTiming;
         [SerializeField] private AnimationCurve PullMultiplierGraph;
         [SerializeField] private float jumpForce;
-        private bool IsJump;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -19,7 +18,7 @@ namespace IndieGameDev
             if (JumpTiming == 0f)
             {
                 characterControl.RIGID_BODY.AddForce(Vector3.up * jumpForce);
-                IsJump = true;
+                characterControl.AnimProgress.Jumped = true;
             }
             animator.SetBool(TransitionParameters.Grounded.ToString(), false);
         }
@@ -27,17 +26,17 @@ namespace IndieGameDev
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             characterControl.PullMultiplier = PullMultiplierGraph.Evaluate(stateInfo.normalizedTime);
-            if (!IsJump && stateInfo.normalizedTime >= JumpTiming)
+            if (!characterControl.AnimProgress.Jumped && stateInfo.normalizedTime >= JumpTiming)
             {
                 characterControl.RIGID_BODY.AddForce(Vector3.up * jumpForce);
-                IsJump = true;
+                characterControl.AnimProgress.Jumped = true;
             }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             characterControl.PullMultiplier = 0f;
-            IsJump = false;
+            characterControl.AnimProgress.Jumped = false;
         }
     }
 }

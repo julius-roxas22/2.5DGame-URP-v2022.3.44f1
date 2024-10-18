@@ -13,33 +13,38 @@ namespace IndieGameDev
         [SerializeField] private PoolObjectType poolObjectType;
         [SerializeField] private bool StickToParent;
 
-        private bool IsSpawned;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             if (SpawnTiming == 0f)
             {
                 SpawnObj(characterControl);
-                IsSpawned = true;
             }
         }
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (!IsSpawned && stateInfo.normalizedTime >= SpawnTiming)
+            if (!characterControl.AnimProgress.PoolObjectList.Contains(poolObjectType) && stateInfo.normalizedTime >= SpawnTiming)
             {
                 SpawnObj(characterControl);
-                IsSpawned = true;
             }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            IsSpawned = false;
+            if (characterControl.AnimProgress.PoolObjectList.Contains(poolObjectType))
+            {
+                characterControl.AnimProgress.PoolObjectList.Remove(poolObjectType);
+            }
         }
 
         private void SpawnObj(CharacterControl characterControl)
         {
+            if (characterControl.AnimProgress.PoolObjectList.Contains(poolObjectType))
+            {
+                return;
+            }
+
             GameObject obj = PoolManager.Instance.InstantiatePrefab(poolObjectType);
 
             if (!string.IsNullOrEmpty(ParentObjName))
@@ -56,6 +61,7 @@ namespace IndieGameDev
             }
 
             obj.SetActive(true);
+            characterControl.AnimProgress.PoolObjectList.Add(poolObjectType);
         }
     }
 }
