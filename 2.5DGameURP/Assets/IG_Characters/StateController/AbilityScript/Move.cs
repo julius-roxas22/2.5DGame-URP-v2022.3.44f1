@@ -11,6 +11,7 @@ namespace IndieGameDev
         [SerializeField] private AnimationCurve SpeedGraph;
         [SerializeField] private float Speed;
         [SerializeField] private bool IsConstantMove;
+        [SerializeField] private bool LockTurn180Deg;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -67,7 +68,6 @@ namespace IndieGameDev
                 {
                     characterControl.MoveAbleCharacter(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
                 }
-                characterControl.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
 
             if (characterControl.MoveLeft)
@@ -76,10 +76,26 @@ namespace IndieGameDev
                 {
                     characterControl.MoveAbleCharacter(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
                 }
-                characterControl.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
+
+            CheckTurn(characterControl);
         }
 
+        private void CheckTurn(CharacterControl characterControl)
+        {
+            if (!LockTurn180Deg)
+            {
+                if (characterControl.MoveRight)
+                {
+                    characterControl.SetFaceForward(true);
+                }
+
+                if (characterControl.MoveLeft)
+                {
+                    characterControl.SetFaceForward(false);
+                }
+            }
+        }
 
         private bool CheckFront(CharacterControl control)
         {

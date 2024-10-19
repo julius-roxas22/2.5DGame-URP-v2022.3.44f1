@@ -14,6 +14,7 @@ namespace IndieGameDev
             VirtualInputManager.Instance.Attack = Input.GetKey(KeyCode.Return) ? true : false;
             VirtualInputManager.Instance.MoveUp = Input.GetKey(KeyCode.W) ? true : false;
             VirtualInputManager.Instance.MoveDown = Input.GetKey(KeyCode.S) ? true : false;
+            VirtualInputManager.Instance.Turbo = Input.GetKey(KeyCode.LeftShift) ? true : false;
         }
     }
 }

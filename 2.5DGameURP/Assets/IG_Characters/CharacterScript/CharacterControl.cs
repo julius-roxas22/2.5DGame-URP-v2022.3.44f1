@@ -13,6 +13,8 @@ namespace IndieGameDev
         Attack,
         ClickAnimation,
         TransitionIndex,
+        Turbo,
+        Turn,
     }
 
     public enum SceneBuilder
@@ -45,6 +47,7 @@ namespace IndieGameDev
         public bool Attack;
         public bool MoveUp;
         public bool MoveDown;
+        public bool Turbo;
 
         private Rigidbody rigid;
 

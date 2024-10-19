@@ -21,6 +21,7 @@ namespace IndieGameDev
             control.Attack = VirtualInputManager.Instance.Attack ? true : false;
             control.MoveUp = VirtualInputManager.Instance.MoveUp ? true : false;
             control.MoveDown = VirtualInputManager.Instance.MoveDown ? true : false;
+            control.Turbo = VirtualInputManager.Instance.Turbo ? true : false;
         }
     }
 }
