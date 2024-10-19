@@ -40,3 +40,4 @@ MonoBehaviour:
   Speed: 4.5
   IsConstantMove: 0
   LockTurn180Deg: 1
+  AllowEarlyTurn: 1

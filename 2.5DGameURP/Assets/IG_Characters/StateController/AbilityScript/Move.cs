@@ -12,10 +12,23 @@ namespace IndieGameDev
         [SerializeField] private float Speed;
         [SerializeField] private bool IsConstantMove;
         [SerializeField] private bool LockTurn180Deg;
+        [SerializeField] private bool AllowEarlyTurn;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
+            if (AllowEarlyTurn && !characterControl.AnimProgress.disAllowEarlyTurn)
+            {
+                if (characterControl.MoveLeft)
+                {
+                    characterControl.SetFaceForward(false);
+                }
 
+                if (characterControl.MoveRight)
+                {
+                    characterControl.SetFaceForward(true);
+                }
+            }
+            characterControl.AnimProgress.disAllowEarlyTurn = false;
         }
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
@@ -77,7 +90,6 @@ namespace IndieGameDev
                     characterControl.MoveAbleCharacter(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
                 }
             }
-
             CheckTurn(characterControl);
         }
 

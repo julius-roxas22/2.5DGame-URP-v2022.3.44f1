@@ -38,3 +38,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   Speed: 2
+  IsConstantMove: 0
+  LockTurn180Deg: 0
+  AllowEarlyTurn: 1

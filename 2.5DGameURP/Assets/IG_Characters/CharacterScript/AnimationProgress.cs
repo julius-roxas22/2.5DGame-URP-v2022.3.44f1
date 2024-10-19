@@ -10,6 +10,7 @@ namespace IndieGameDev
         public bool CameraShaken;
         public List<PoolObjectType> PoolObjectList = new List<PoolObjectType>();
         public bool AttackTriggered;
+        public bool disAllowEarlyTurn;
         public float MaxPressTime;
 
         private float PressTime;

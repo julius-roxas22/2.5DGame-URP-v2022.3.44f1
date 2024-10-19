@@ -13,7 +13,6 @@ namespace IndieGameDev
         JUMP,
         ATTACK,
         LEDGE_GRAB,
-        IS_HAMMER_DOWN_SURFACE
     }
 
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/TransitionIndexer")]

@@ -7,7 +7,7 @@ namespace IndieGameDev
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/CheckTurbo")]
     public class CheckTurbo : StateData
     {
-
+        [SerializeField] private bool MustRequireMovement;
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
 
@@ -17,7 +17,21 @@ namespace IndieGameDev
         {
             if (characterControl.Turbo)
             {
-                animator.SetBool(TransitionParameters.Turbo.ToString(), true);
+                if (MustRequireMovement)
+                {
+                    if (characterControl.MoveLeft || characterControl.MoveRight)
+                    {
+                        animator.SetBool(TransitionParameters.Turbo.ToString(), true);
+                    }
+                    else
+                    {
+                        animator.SetBool(TransitionParameters.Turbo.ToString(), false);
+                    }
+                }
+                else
+                {
+                    animator.SetBool(TransitionParameters.Turbo.ToString(), true);
+                }
             }
             else
             {
