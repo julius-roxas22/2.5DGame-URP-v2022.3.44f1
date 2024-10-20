@@ -5,17 +5,17 @@ using UnityEditor;
 
 namespace IndieGameDev
 {
-    [CustomEditor(typeof(PathFinderAgent))]
-    public class PathFinderAgentEditor : Editor
+    [CustomEditor(typeof(PathFindingAgent))]
+    public class PathFindingAgentEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            PathFinderAgent finderAgent = (PathFinderAgent)target;
+            PathFindingAgent finderAgent = (PathFindingAgent)target;
             if (GUILayout.Button("Chase Target"))
             {
-                finderAgent.TowardsToTarget();
+                finderAgent.GoToDistination();
             }
         }
     }

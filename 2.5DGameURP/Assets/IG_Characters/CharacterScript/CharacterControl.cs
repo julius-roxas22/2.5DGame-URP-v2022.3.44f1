@@ -36,8 +36,9 @@ namespace IndieGameDev
         public float PullMultiplier;
         public LedgeChecker ledgeChecker;
         public AnimationProgress AnimProgress;
-
+        public AIProgress NPCAnimProgress;
         public List<Collider> RagdollParts = new List<Collider>();
+
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
         private Dictionary<string, GameObject> ParentObjDictionaries = new Dictionary<string, GameObject>();
 
@@ -67,6 +68,7 @@ namespace IndieGameDev
         {
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
             AnimProgress = GetComponent<AnimationProgress>();
+            NPCAnimProgress = GetComponentInChildren<AIProgress>();
 
             bool SwitchBack = false;
 
