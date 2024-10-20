@@ -25,5 +25,21 @@ namespace IndieGameDev
             }
             return null;
         }
+
+        public CharacterControl GetPlayableCharacter()
+        {
+            foreach (CharacterControl character in characters)
+            {
+                ManualInput mInput = character.GetComponent<ManualInput>();
+                if (null != mInput)
+                {
+                    if (mInput.enabled)
+                    {
+                        return character;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

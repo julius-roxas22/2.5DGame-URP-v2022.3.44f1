@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5537159728472564417}
   - component: {fileID: 3331970633520973193}
   m_Layer: 0
-  m_Name: ProsProcVolume
+  m_Name: ProsProcVolume_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

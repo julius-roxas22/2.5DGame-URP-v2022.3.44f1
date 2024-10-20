@@ -197,7 +197,7 @@ namespace IndieGameDev
             float back = box.bounds.center.z - box.bounds.extents.z;
 
             GameObject bottomBack = CreatePrefabSphereEdge(new Vector3(0f, bottom, back));
-            GameObject bottomFront = CreatePrefabSphereEdge(new Vector3(0f, bottom, front));
+            GameObject bottomFront = CreatePrefabSphereEdge(new Vector3(0f, bottom + 0.2f, front));
             GameObject topFront = CreatePrefabSphereEdge(new Vector3(0f, top, front));
 
             BottomSpheres.Add(bottomBack);
