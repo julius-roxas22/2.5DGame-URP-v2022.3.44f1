@@ -11,7 +11,7 @@ namespace IndieGameDev
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             Vector3 dis = characterControl.NPCAnimProgress.agent.OffMeshStartPosition - characterControl.transform.position;
-            
+
             if (dis.z > 0f)
             {
                 characterControl.MoveRight = true;
@@ -32,12 +32,17 @@ namespace IndieGameDev
             {
                 characterControl.MoveRight = false;
                 characterControl.MoveLeft = false;
+
+                if (characterControl.NPCAnimProgress.agent.EndSphere.transform.position.y > characterControl.NPCAnimProgress.agent.StartSphere.transform.position.y)
+                {
+                    animator.SetBool(NPCTransitionParameters.NPCJump.ToString(), true);
+                }
             }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-
+            animator.SetBool(NPCTransitionParameters.NPCJump.ToString(), false);
         }
     }
 }

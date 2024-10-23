@@ -198,24 +198,25 @@ namespace IndieGameDev
             float front = box.bounds.center.z + box.bounds.extents.z;
             float back = box.bounds.center.z - box.bounds.extents.z;
 
+            GameObject bottomFrontVer = CreatePrefabSphereEdge(new Vector3(0f, bottom + 0.05f, front));
+            GameObject bottomFrontHor = CreatePrefabSphereEdge(new Vector3(0f, bottom, front));
             GameObject bottomBack = CreatePrefabSphereEdge(new Vector3(0f, bottom, back));
-            GameObject bottomFront = CreatePrefabSphereEdge(new Vector3(0f, bottom + 0.2f, front));
             GameObject topFront = CreatePrefabSphereEdge(new Vector3(0f, top, front));
 
+            BottomSpheres.Add(bottomFrontHor);
             BottomSpheres.Add(bottomBack);
-            BottomSpheres.Add(bottomFront);
 
+            FrontSpheres.Add(bottomFrontVer);
             FrontSpheres.Add(topFront);
-            FrontSpheres.Add(bottomFront);
 
-            float horSphereSection = (bottomBack.transform.position - bottomFront.transform.position).magnitude / 5f;
-            CreatePrefabSphereEdge(bottomBack.transform, bottomBack.transform.forward, horSphereSection, 4, BottomSpheres);
+            float horSphereSection = (bottomBack.transform.position - bottomFrontHor.transform.position).magnitude / 5f;
+            CreatePrefabSphereEdge(bottomBack, transform.forward, horSphereSection, 4, BottomSpheres);
 
-            float verSphereSection = (bottomFront.transform.position - topFront.transform.position).magnitude / 10f;
-            CreatePrefabSphereEdge(bottomFront.transform, bottomFront.transform.up, verSphereSection, 9, FrontSpheres);
+            float verSphereSection = (bottomFrontVer.transform.position - topFront.transform.position).magnitude / 10f;
+            CreatePrefabSphereEdge(bottomFrontVer, transform.up, verSphereSection, 9, FrontSpheres);
         }
 
-        private void CreatePrefabSphereEdge(Transform start, Vector3 direction, float section, int iteration, List<GameObject> spheres)
+        private void CreatePrefabSphereEdge(GameObject start, Vector3 direction, float section, int iteration, List<GameObject> spheres)
         {
             for (int i = 0; i < iteration; i++)
             {

@@ -15,10 +15,10 @@ namespace IndieGameDev
 
         public Vector3 OffMeshStartPosition;
         public Vector3 OffMeshEndPosition;
+        public GameObject StartSphere;
+        public GameObject EndSphere;
 
-        [SerializeField] private GameObject StartSphere;
-        [SerializeField] private GameObject EndSphere;
-        [SerializeField] private Vector3 CurrentPosition;
+        //[SerializeField] private Vector3 CurrentPosition;
 
         public bool NPCMove;
 
@@ -29,7 +29,7 @@ namespace IndieGameDev
 
         private void Update()
         {
-            CurrentPosition = transform.position;
+            //CurrentPosition = transform.position;
         }
 
         IEnumerator IEOnTargetStep()
@@ -38,14 +38,14 @@ namespace IndieGameDev
             {
                 if (agent.isOnOffMeshLink)
                 {
-                    OffMeshStartPosition = CurrentPosition;
-                    StartSphere.transform.position = CurrentPosition;
+                    OffMeshStartPosition = /*CurrentPosition*/ transform.position;
+                    StartSphere.transform.position = /*CurrentPosition*/ transform.position;
                     agent.CompleteOffMeshLink();
 
                     yield return new WaitForEndOfFrame();
 
-                    OffMeshEndPosition = CurrentPosition;
-                    EndSphere.transform.position = CurrentPosition;
+                    OffMeshEndPosition = /*CurrentPosition*/ transform.position;
+                    EndSphere.transform.position = /*CurrentPosition*/ transform.position;
                     agent.isStopped = true;
                     NPCMove = true;
                     yield break;
@@ -55,11 +55,11 @@ namespace IndieGameDev
 
                 if (sqrtDistance.sqrMagnitude < 0.5f)
                 {
-                    OffMeshStartPosition = CurrentPosition;
-                    StartSphere.transform.position = CurrentPosition;
+                    OffMeshStartPosition = /*CurrentPosition*/ transform.position;
+                    StartSphere.transform.position = /*CurrentPosition*/ transform.position;
 
-                    OffMeshEndPosition = CurrentPosition;
-                    EndSphere.transform.position = CurrentPosition;
+                    OffMeshEndPosition = /*CurrentPosition*/ transform.position;
+                    EndSphere.transform.position = /*CurrentPosition*/ transform.position;
                     NPCMove = true;
                     agent.isStopped = true;
                     yield break;
@@ -71,11 +71,12 @@ namespace IndieGameDev
 
         public void GoToDistination()
         {
-            NPCMove = false;
             agent.enabled = true;
 
             StartSphere.transform.parent = null;
             EndSphere.transform.parent = null;
+
+            NPCMove = false;
 
             agent.isStopped = false;
 

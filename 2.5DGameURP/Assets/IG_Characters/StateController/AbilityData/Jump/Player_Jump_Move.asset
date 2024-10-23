@@ -24,27 +24,20 @@ MonoBehaviour:
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.29619688
+      time: 1
       value: 1
-      inSlope: -0.042406756
-      outSlope: -0.042406756
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.3
-      value: 0.5
-      inSlope: -131.47052
-      outSlope: -131.47052
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Speed: 1.5
+  Speed: 3
   IsConstantMove: 0
+  LockTurn180Deg: 0
+  AllowEarlyTurn: 0
