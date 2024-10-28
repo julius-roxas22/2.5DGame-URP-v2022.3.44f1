@@ -13,12 +13,8 @@ namespace IndieGameDev
         private GameObject target;
         private NavMeshAgent agent;
 
-        public Vector3 OffMeshStartPosition;
-        public Vector3 OffMeshEndPosition;
         public GameObject StartSphere;
         public GameObject EndSphere;
-
-        //[SerializeField] private Vector3 CurrentPosition;
 
         public bool NPCMove;
 
@@ -27,25 +23,18 @@ namespace IndieGameDev
             agent = GetComponent<NavMeshAgent>();
         }
 
-        private void Update()
-        {
-            //CurrentPosition = transform.position;
-        }
-
         IEnumerator IEOnTargetStep()
         {
             while (true)
             {
                 if (agent.isOnOffMeshLink)
                 {
-                    OffMeshStartPosition = /*CurrentPosition*/ transform.position;
-                    StartSphere.transform.position = /*CurrentPosition*/ transform.position;
+
+                    StartSphere.transform.position = agent.currentOffMeshLinkData.startPos;
+                    EndSphere.transform.position = agent.currentOffMeshLinkData.endPos;
+
                     agent.CompleteOffMeshLink();
 
-                    yield return new WaitForEndOfFrame();
-
-                    OffMeshEndPosition = /*CurrentPosition*/ transform.position;
-                    EndSphere.transform.position = /*CurrentPosition*/ transform.position;
                     agent.isStopped = true;
                     NPCMove = true;
                     yield break;
@@ -55,13 +44,10 @@ namespace IndieGameDev
 
                 if (sqrtDistance.sqrMagnitude < 0.5f)
                 {
-                    OffMeshStartPosition = /*CurrentPosition*/ transform.position;
-                    StartSphere.transform.position = /*CurrentPosition*/ transform.position;
-
-                    OffMeshEndPosition = /*CurrentPosition*/ transform.position;
-                    EndSphere.transform.position = /*CurrentPosition*/ transform.position;
-                    NPCMove = true;
+                    StartSphere.transform.position = agent.destination;
+                    EndSphere.transform.position = agent.destination;
                     agent.isStopped = true;
+                    NPCMove = true;
                     yield break;
                 }
 

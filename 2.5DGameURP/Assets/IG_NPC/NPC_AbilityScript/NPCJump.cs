@@ -21,7 +21,6 @@ namespace IndieGameDev
             {
                 characterControl.SetFaceForward(false);
             }
-
         }
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
@@ -30,7 +29,7 @@ namespace IndieGameDev
 
             float bottomDist = characterControl.NPCAnimProgress.agent.EndSphere.transform.position.y - characterControl.FrontSpheres[0].transform.position.y;
 
-            if (topDist < 3f && bottomDist > 1f)
+            if (topDist < 1.5f && bottomDist > 1f)
             {
                 if (characterControl.IsFacingForward())
                 {
@@ -50,6 +49,9 @@ namespace IndieGameDev
                 characterControl.MoveLeft = false;
                 characterControl.MoveUp = false;
                 characterControl.Jump = false;
+
+                animator.gameObject.SetActive(false);
+                animator.gameObject.SetActive(true);
             }
         }
 
