@@ -37,6 +37,7 @@ namespace IndieGameDev
         public LedgeChecker ledgeChecker;
         public AnimationProgress AnimProgress;
         public AIProgress NPCAnimProgress;
+        public DamageDetector damageDetector;
         public List<Collider> RagdollParts = new List<Collider>();
 
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
@@ -69,6 +70,7 @@ namespace IndieGameDev
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
             AnimProgress = GetComponent<AnimationProgress>();
             NPCAnimProgress = GetComponentInChildren<AIProgress>();
+            damageDetector = GetComponent<DamageDetector>();
 
             bool SwitchBack = false;
 

@@ -75,7 +75,10 @@ namespace IndieGameDev
 
             if (MoveRoutines.Count != 0)
             {
-                StopCoroutine(MoveRoutines[0]);
+                if (null != MoveRoutines[0])
+                {
+                    StopCoroutine(MoveRoutines[0]);
+                }
                 MoveRoutines.RemoveAt(0);
             }
             MoveRoutines.Add(StartCoroutine(IEOnTargetStep()));

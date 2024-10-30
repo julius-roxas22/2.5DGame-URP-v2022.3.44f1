@@ -45,10 +45,36 @@ namespace IndieGameDev
 
             if (characterControl.NPCAnimProgress.agent.StartSphere.transform.position.y == characterControl.NPCAnimProgress.agent.EndSphere.transform.position.y)
             {
-                if (dist.sqrMagnitude < 0.5f)
+                if (dist.sqrMagnitude < 1f)
                 {
                     characterControl.MoveRight = false;
                     characterControl.MoveLeft = false;
+
+                    Vector3 playerDist = characterControl.transform.position - CharacterManager.Instance.GetPlayableCharacter().transform.position;
+
+                    if (playerDist.sqrMagnitude > 1f)
+                    {
+                        animator.gameObject.SetActive(false);
+                        animator.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        if (CharacterManager.Instance.GetPlayableCharacter().damageDetector.DamageTaken == 0)
+                        {
+                            if (characterControl.IsFacingForward())
+                            {
+                                characterControl.MoveRight = true;
+                                characterControl.MoveLeft = false;
+                                characterControl.Attack = true;
+                            }
+                            else
+                            {
+                                characterControl.MoveRight = false;
+                                characterControl.MoveLeft = true;
+                                characterControl.Attack = true;
+                            }
+                        }
+                    }
                 }
             }
         }
