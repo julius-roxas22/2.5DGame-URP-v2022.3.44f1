@@ -1823,6 +1823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: yBot - Green
       objectReference: {fileID: 0}
+    - target: {fileID: 3848389427349401314, guid: fa5ed926134c77342a2c04d275d3a9c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9124299883857147809, guid: fa5ed926134c77342a2c04d275d3a9c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1831,12 +1836,12 @@ PrefabInstance:
     - target: {fileID: 9124299883857147809, guid: fa5ed926134c77342a2c04d275d3a9c6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.12
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 9124299883857147809, guid: fa5ed926134c77342a2c04d275d3a9c6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.71
+      value: -12.63
       objectReference: {fileID: 0}
     - target: {fileID: 9124299883857147809, guid: fa5ed926134c77342a2c04d275d3a9c6,
         type: 3}
@@ -2713,6 +2718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: yBot - Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 869473416010315978, guid: d62dfd9d3787a2747b058559aedcce82,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3092976030782816588, guid: d62dfd9d3787a2747b058559aedcce82,
         type: 3}
@@ -3957,8 +3967,8 @@ SceneRoots:
   - {fileID: 1492167795}
   - {fileID: 519658384}
   - {fileID: 986700798}
-  - {fileID: 1586862339}
   - {fileID: 1792522541}
   - {fileID: 1936610104}
   - {fileID: 381311858}
   - {fileID: 1042920384}
+  - {fileID: 1586862339}

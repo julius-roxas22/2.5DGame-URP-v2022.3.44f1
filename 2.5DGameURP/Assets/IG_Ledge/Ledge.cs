@@ -26,6 +26,15 @@ namespace IndieGameDev
             }
             return true;
         }
+
+        public static bool IsCharacter(GameObject obj)
+        {
+            if (null == obj.gameObject.transform.root.GetComponent<CharacterControl>())
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
 
