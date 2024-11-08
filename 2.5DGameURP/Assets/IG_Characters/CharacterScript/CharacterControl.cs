@@ -141,13 +141,15 @@ namespace IndieGameDev
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.isTrigger = true;
-                    RagdollParts.Add(col);
-                    if (null == col.GetComponent<TriggerDetector>())
+                    if (null == col.gameObject.GetComponent<LedgeChecker>())
                     {
-                        col.gameObject.AddComponent<TriggerDetector>();
+                        col.isTrigger = true;
+                        RagdollParts.Add(col);
+                        if (null == col.GetComponent<TriggerDetector>())
+                        {
+                            col.gameObject.AddComponent<TriggerDetector>();
+                        }
                     }
-                    //DestroyImmediate(col.GetComponent<TriggerDetector>());
                 }
             }
         }

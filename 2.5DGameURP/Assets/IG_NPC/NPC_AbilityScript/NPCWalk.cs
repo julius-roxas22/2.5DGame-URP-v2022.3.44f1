@@ -10,6 +10,7 @@ namespace IndieGameDev
     {
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
+
             Vector3 dis = characterControl.NPCAnimProgress.agent.StartSphere.transform.position - characterControl.transform.position;
 
             if (dis.z > 0f)
