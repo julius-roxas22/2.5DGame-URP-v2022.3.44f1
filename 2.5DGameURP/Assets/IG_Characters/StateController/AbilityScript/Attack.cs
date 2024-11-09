@@ -4,12 +4,19 @@ using UnityEngine;
 
 namespace IndieGameDev
 {
+    public enum AttackType
+    {
+        RIGHT_HAND,
+        LEFT_HAND
+    }
+
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/Attack")]
     public class Attack : StateData
     {
         public float StartAttackTime;
         public float EndTimeAttack;
-        public List<string> ColliderNames = new List<string>();
+        //public List<string> ColliderNames = new List<string>();
+        public List<AttackType> AttackTypes = new List<AttackType>();
         public DeathType deathType;
         public bool MustCollide;
         public bool MustFaceAttacker;

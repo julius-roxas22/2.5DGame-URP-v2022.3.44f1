@@ -8,7 +8,8 @@ namespace IndieGameDev
     {
         public CharacterControl Attacker = null;
         public Attack AttackAbility;
-        public List<string> CollidingNames = new List<string>();
+        //public List<string> CollidingNames = new List<string>();
+        public List<AttackType> AttackTypes = new List<AttackType>();
         public bool MustCollide;
         public DeathType deathType;
         public bool MustFaceAttacker;
@@ -32,7 +33,7 @@ namespace IndieGameDev
 
             AttackAbility = attack;
             deathType = attack.deathType;
-            CollidingNames = attack.ColliderNames;
+            AttackTypes = attack.AttackTypes;
             MustCollide = attack.MustCollide;
             MustFaceAttacker = attack.MustFaceAttacker;
             LethalRange = attack.LethalRange;

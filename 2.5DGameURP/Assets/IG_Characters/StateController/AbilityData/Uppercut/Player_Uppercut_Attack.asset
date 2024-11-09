@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartAttackTime: 0.3
   EndTimeAttack: 0.47
-  ColliderNames:
-  - mixamorig:RightHand
+  AttackTypes: 00000000
   deathType: 1
   MustCollide: 1
   MustFaceAttacker: 0

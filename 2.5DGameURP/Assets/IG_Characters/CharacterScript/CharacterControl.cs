@@ -25,24 +25,20 @@ namespace IndieGameDev
 
     public class CharacterControl : MonoBehaviour
     {
-        public CharacterColorType characterColorType;
-        public float movementSpeed;
-        public Animator skinnedMeshAnimator;
-        public Material mat;
-        public GameObject SphereEdgePrefab;
-        public List<GameObject> BottomSpheres = new List<GameObject>();
-        public List<GameObject> FrontSpheres = new List<GameObject>();
+
+        [Header("Gravity")]
         public float GravityMultiplier;
         public float PullMultiplier;
+
+        [Header("SubComponent")]
         public LedgeChecker ledgeChecker;
         public AnimationProgress AnimProgress;
         public AIProgress NPCAnimProgress;
         public DamageDetector damageDetector;
-        public List<Collider> RagdollParts = new List<Collider>();
 
-        private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
-        private Dictionary<string, GameObject> ParentObjDictionaries = new Dictionary<string, GameObject>();
 
+
+        [Header("Input")]
         public bool Jump;
         public bool MoveRight;
         public bool MoveLeft;
@@ -51,6 +47,20 @@ namespace IndieGameDev
         public bool MoveDown;
         public bool Turbo;
 
+        [Header("Setup")]
+        public List<Collider> RagdollParts = new List<Collider>();
+        public GameObject SphereEdgePrefab;
+        public List<GameObject> BottomSpheres = new List<GameObject>();
+        public List<GameObject> FrontSpheres = new List<GameObject>();
+        public GameObject RightHandAttack;
+        public GameObject LeftHandAttack;
+        public CharacterColorType characterColorType;
+        public float movementSpeed;
+        public Animator skinnedMeshAnimator;
+        public Material mat;
+
+        private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
+        private Dictionary<string, GameObject> ParentObjDictionaries = new Dictionary<string, GameObject>();
         private Rigidbody rigid;
 
         public Rigidbody RIGID_BODY

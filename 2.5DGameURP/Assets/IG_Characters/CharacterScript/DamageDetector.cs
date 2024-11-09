@@ -86,11 +86,20 @@ namespace IndieGameDev
             {
                 foreach (Collider col in trigger.CollidingParts)
                 {
-                    foreach (string colName in info.CollidingNames)
+                    foreach (AttackType p in info.AttackTypes)
                     {
-                        if (colName.Equals(col.gameObject.name))
+                        if (p == AttackType.RIGHT_HAND)
                         {
-                            if (info.Attacker.gameObject == col.transform.root.gameObject)
+                            if (col.gameObject == info.Attacker.RightHandAttack)
+                            {
+                                DamagePart = trigger.BodyPart;
+                                return true;
+
+                            }
+                        }
+                        else if (p == AttackType.LEFT_HAND)
+                        {
+                            if (col.gameObject == info.Attacker.LeftHandAttack)
                             {
                                 DamagePart = trigger.BodyPart;
                                 return true;

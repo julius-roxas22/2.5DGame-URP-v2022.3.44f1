@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartAttackTime: 0.17
   EndTimeAttack: 0.54
-  ColliderNames:
-  - LeftHand
-  - mixamorig:LeftHand
+  AttackTypes: 01000000
+  deathType: 0
   MustCollide: 1
   MustFaceAttacker: 0
   LethalRange: 0
   Maxhits: 1
-  FinishedAttack:
-  - {fileID: 0}
+  debug: 0

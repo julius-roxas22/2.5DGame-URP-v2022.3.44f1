@@ -1849,18 +1849,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130244bc403e42643832db9f94165c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterColorType: 3
-  movementSpeed: 2
-  skinnedMeshAnimator: {fileID: 6823457423520675110}
-  mat: {fileID: 2100000, guid: 5e6b9a19c6f54444081a7992c254bc3a, type: 2}
-  SphereEdgePrefab: {fileID: 1244673664232890433, guid: dfbe63df0d5a5634daaf96484beffb35,
-    type: 3}
-  BottomSpheres: []
-  FrontSpheres: []
   GravityMultiplier: 0
   PullMultiplier: 0
   ledgeChecker: {fileID: 0}
   AnimProgress: {fileID: 0}
+  NPCAnimProgress: {fileID: 0}
+  damageDetector: {fileID: 0}
+  characterColorType: 3
+  movementSpeed: 2
+  skinnedMeshAnimator: {fileID: 6823457423520675110}
+  mat: {fileID: 2100000, guid: 5e6b9a19c6f54444081a7992c254bc3a, type: 2}
+  Jump: 0
+  MoveRight: 0
+  MoveLeft: 0
+  Attack: 0
+  MoveUp: 0
+  MoveDown: 0
+  Turbo: 0
   RagdollParts:
   - {fileID: 2596624083137597539}
   - {fileID: 1259801630718494028}
@@ -1875,12 +1880,12 @@ MonoBehaviour:
   - {fileID: 5227839172246210072}
   - {fileID: 517716405191399846}
   - {fileID: 6756864771650053315}
-  Jump: 0
-  MoveRight: 0
-  MoveLeft: 0
-  Attack: 0
-  MoveUp: 0
-  MoveDown: 0
+  SphereEdgePrefab: {fileID: 1244673664232890433, guid: dfbe63df0d5a5634daaf96484beffb35,
+    type: 3}
+  BottomSpheres: []
+  FrontSpheres: []
+  RightHandAttack: {fileID: 5169735294224857949}
+  LeftHandAttack: {fileID: 1832504255069036321}
 --- !u!114 &8724351413152493127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,6 +1927,7 @@ MonoBehaviour:
   CameraShaken: 0
   PoolObjectList: 
   AttackTriggered: 0
+  disAllowEarlyTurn: 0
   MaxPressTime: 0.1
 --- !u!1 &3952535394121580323
 GameObject:
