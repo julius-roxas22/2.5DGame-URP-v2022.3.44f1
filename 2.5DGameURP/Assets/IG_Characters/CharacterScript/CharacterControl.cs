@@ -49,7 +49,6 @@ namespace IndieGameDev
 
         [Header("Setup")]
         public List<Collider> RagdollParts = new List<Collider>();
-        public GameObject SphereEdgePrefab;
         public List<GameObject> BottomSpheres = new List<GameObject>();
         public List<GameObject> FrontSpheres = new List<GameObject>();
         public GameObject RightHandAttack;
@@ -242,7 +241,7 @@ namespace IndieGameDev
 
         private GameObject CreatePrefabSphereEdge(Vector3 position)
         {
-            return Instantiate(SphereEdgePrefab, position, Quaternion.identity, transform);
+            return Instantiate(Resources.Load("SpherePrefabEdge", typeof(GameObject)), position, Quaternion.identity, transform) as GameObject;
         }
 
         public void MoveAbleCharacter(float Speed, float SpeedGraph)

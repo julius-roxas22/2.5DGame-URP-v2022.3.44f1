@@ -32,8 +32,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hammer Down (combo - ending)
-  m_Speed: 1.5
+  m_Name: Cross Punch
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3265969245737846036}
@@ -48,7 +48,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 2c47821a387c90f4c80964f4c7224dfd,
+  m_Motion: {fileID: -203655887218126122, guid: 0c84029b42714d94caf394660530060e,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -929,9 +929,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.41255182
+  m_TransitionDuration: 0.16768432
   m_TransitionOffset: 0
-  m_ExitTime: 0.77115
+  m_ExitTime: 0.8578353
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1973,12 +1973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityDatas:
-  - {fileID: 11400000, guid: 5e9b86fd8227fb9489d677bc15ca0e86, type: 2}
-  - {fileID: 11400000, guid: 742b49c8be5d1e042a59c7f5a6a7d02e, type: 2}
-  - {fileID: 11400000, guid: 01938706708ec3b4fae7e158c46f1f00, type: 2}
-  - {fileID: 11400000, guid: e9df893ade97bf1418b1585d5e4fee0e, type: 2}
-  - {fileID: 11400000, guid: 79147ecd50b1d0d439ba553e0753acba, type: 2}
-  - {fileID: 11400000, guid: 9f29b6695f7024840ad17a1532d3e009, type: 2}
+  - {fileID: 11400000, guid: 6e89861ce301df54ab1bf980b089325c, type: 2}
 --- !u!1102 &3907631591448213925
 AnimatorState:
   serializedVersion: 6

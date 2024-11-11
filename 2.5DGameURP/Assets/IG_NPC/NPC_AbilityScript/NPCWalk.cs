@@ -53,29 +53,29 @@ namespace IndieGameDev
 
                     Vector3 playerDist = characterControl.transform.position - CharacterManager.Instance.GetPlayableCharacter().transform.position;
 
-                    if (playerDist.sqrMagnitude > 1f)
+                    if (playerDist.sqrMagnitude > 1.4f)
                     {
                         animator.gameObject.SetActive(false);
                         animator.gameObject.SetActive(true);
                     }
-                    else
+                    /* else
                     {
-                        if (CharacterManager.Instance.GetPlayableCharacter().damageDetector.DamageTaken == 0)
-                        {
-                            if (characterControl.IsFacingForward())
-                            {
-                                characterControl.MoveRight = true;
-                                characterControl.MoveLeft = false;
-                                characterControl.Attack = true;
-                            }
-                            else
-                            {
-                                characterControl.MoveRight = false;
-                                characterControl.MoveLeft = true;
-                                characterControl.Attack = true;
-                            }
-                        }
-                    }
+                         if (CharacterManager.Instance.GetPlayableCharacter().damageDetector.DamageTaken == 0)
+                         {
+                             if (characterControl.IsFacingForward())
+                             {
+                                 characterControl.MoveRight = true;
+                                 characterControl.MoveLeft = false;
+                                 characterControl.Attack = true;
+                             }
+                             else
+                             {
+                                 characterControl.MoveRight = false;
+                                 characterControl.MoveLeft = true;
+                                 characterControl.Attack = true;
+                             }
+                         }
+                     }*/
                 }
             }
         }

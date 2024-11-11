@@ -122,7 +122,8 @@ namespace IndieGameDev
             {
                 CameraManager.Instance.ShakeCamera(.3f);
             }
-            control.skinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetDeathAnimation(DamagePart, info); //info.AttackAbility.GetDeathAnimatorController();
+
+            control.skinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetDeathAnimation(DamagePart, info);
             info.CurrentHits++;
             control.GetComponent<BoxCollider>().enabled = false;
             control.ledgeChecker.GetComponent<BoxCollider>().enabled = false;

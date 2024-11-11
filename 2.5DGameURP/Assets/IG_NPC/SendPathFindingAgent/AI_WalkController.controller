@@ -21,7 +21,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New State
+  m_Name: NPC_Fall
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -86,10 +86,10 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AI_SendPathFindingAnimController
+  m_Name: AI_WalkController
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: NPCMove
+  - m_Name: NPCWalk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -102,6 +102,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: NPCFall
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: NPCRun
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -227,7 +233,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: NPCMove
+    m_ConditionEvent: NPCWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2622600374892911407}

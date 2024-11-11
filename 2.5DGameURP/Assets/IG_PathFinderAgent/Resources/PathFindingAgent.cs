@@ -16,7 +16,7 @@ namespace IndieGameDev
         public GameObject StartSphere;
         public GameObject EndSphere;
 
-        public bool NPCMove;
+        public bool NPCStartWalk;
 
         private void Awake()
         {
@@ -36,7 +36,7 @@ namespace IndieGameDev
                     agent.CompleteOffMeshLink();
 
                     agent.isStopped = true;
-                    NPCMove = true;
+                    NPCStartWalk = true;
                     yield break;
                 }
 
@@ -47,7 +47,7 @@ namespace IndieGameDev
                     StartSphere.transform.position = agent.destination;
                     EndSphere.transform.position = agent.destination;
                     agent.isStopped = true;
-                    NPCMove = true;
+                    NPCStartWalk = true;
                     yield break;
                 }
 
@@ -62,7 +62,7 @@ namespace IndieGameDev
             StartSphere.transform.parent = null;
             EndSphere.transform.parent = null;
 
-            NPCMove = false;
+            NPCStartWalk = false;
 
             agent.isStopped = false;
 

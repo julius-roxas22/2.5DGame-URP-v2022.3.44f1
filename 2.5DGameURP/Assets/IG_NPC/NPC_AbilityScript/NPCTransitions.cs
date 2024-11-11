@@ -6,9 +6,10 @@ namespace IndieGameDev
 {
     public enum NPCTransitionParameters
     {
-        NPCMove,
+        NPCWalk,
         NPCJump,
-        NPCFall
+        NPCFall,
+        NPCRun
     }
 
     public class NPCTransitions : MonoBehaviour

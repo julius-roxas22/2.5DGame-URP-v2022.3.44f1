@@ -26,15 +26,17 @@ namespace IndieGameDev
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             PathFindingAgent agent = characterControl.NPCAnimProgress.agent;
-            if (agent.NPCMove)
+            if (agent.NPCStartWalk)
             {
-                animator.SetBool(NPCTransitionParameters.NPCMove.ToString(), true);
+                animator.SetBool(NPCTransitionParameters.NPCWalk.ToString(), true);
+                animator.SetBool(NPCTransitionParameters.NPCRun.ToString(), true);
             }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            animator.SetBool(NPCTransitionParameters.NPCMove.ToString(), false);
+            animator.SetBool(NPCTransitionParameters.NPCWalk.ToString(), false);
+            animator.SetBool(NPCTransitionParameters.NPCRun.ToString(), false);
         }
     }
 }

@@ -13,7 +13,6 @@ namespace IndieGameDev
         [SerializeField] private PoolObjectType poolObjectType;
         [SerializeField] private bool StickToParent;
 
-
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             if (SpawnTiming == 0f)

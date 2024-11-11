@@ -13,7 +13,16 @@ namespace IndieGameDev
             characterControl.Jump = true;
             characterControl.MoveUp = true;
 
-            if (characterControl.NPCAnimProgress.agent.StartSphere.transform.position.z < characterControl.NPCAnimProgress.agent.EndSphere.transform.position.z)
+            //if (characterControl.NPCAnimProgress.agent.StartSphere.transform.position.z < characterControl.NPCAnimProgress.agent.EndSphere.transform.position.z)
+            //{
+            //    characterControl.SetFaceForward(true);
+            //}
+            //else
+            //{
+            //    characterControl.SetFaceForward(false);
+            //}
+
+            if (characterControl.transform.position.z < characterControl.NPCAnimProgress.agent.EndSphere.transform.position.z)
             {
                 characterControl.SetFaceForward(true);
             }
