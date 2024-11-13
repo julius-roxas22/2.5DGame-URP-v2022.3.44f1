@@ -35,8 +35,7 @@ namespace IndieGameDev
         public AnimationProgress AnimProgress;
         public AIProgress NPCAnimProgress;
         public DamageDetector damageDetector;
-
-
+        public AIController NPCController;
 
         [Header("Input")]
         public bool Jump;
@@ -80,6 +79,7 @@ namespace IndieGameDev
             AnimProgress = GetComponent<AnimationProgress>();
             NPCAnimProgress = GetComponentInChildren<AIProgress>();
             damageDetector = GetComponent<DamageDetector>();
+            NPCController = GetComponentInChildren<AIController>();
 
             bool SwitchBack = false;
 

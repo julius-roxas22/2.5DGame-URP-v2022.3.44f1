@@ -15,11 +15,13 @@ namespace IndieGameDev
 
             if (dis.z > 0f)
             {
+                characterControl.SetFaceForward(true);
                 characterControl.MoveRight = true;
                 characterControl.MoveLeft = false;
             }
             else
             {
+                characterControl.SetFaceForward(false);
                 characterControl.MoveRight = false;
                 characterControl.MoveLeft = true;
             }
@@ -31,7 +33,7 @@ namespace IndieGameDev
         {
             Vector3 dist = characterControl.NPCAnimProgress.agent.StartSphere.transform.position - characterControl.transform.position;
 
-            if (Vector3.SqrMagnitude(dist) < 2.4f)
+            if (Vector3.SqrMagnitude(dist) < 2f)
             {
                 characterControl.MoveRight = false;
                 characterControl.MoveLeft = false;
