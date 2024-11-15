@@ -45,14 +45,14 @@ namespace IndieGameDev
                     return true;
                 }
             }
-            /* else if (InitialTransitionType == AITransitionType.WALK_TO_RUN)
-             {
-                 Vector3 dist = characterControl.transform.position - CharacterManager.Instance.GetPlayableCharacter().transform.position;
-                 if (Vector3.SqrMagnitude(dist) > 5f)
-                 {
-                     return true;
-                 }
-             }*/
+            else if (InitialTransitionType == AITransitionType.WALK_TO_RUN)
+            {
+                Vector3 dist = characterControl.NPCAnimProgress.agent.StartSphere.transform.position - characterControl.transform.position;
+                if (Vector3.SqrMagnitude(dist) > 2f)
+                {
+                    return true;
+                }
+            }
             return false;
         }
     }
