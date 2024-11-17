@@ -41,3 +41,5 @@ MonoBehaviour:
   IsConstantMove: 0
   LockTurn180Deg: 0
   AllowEarlyTurn: 0
+  UseMomentum: 1
+  MaxMomentum: 0.5

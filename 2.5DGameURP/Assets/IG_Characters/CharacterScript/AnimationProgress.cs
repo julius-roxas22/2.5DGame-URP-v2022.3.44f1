@@ -12,6 +12,7 @@ namespace IndieGameDev
         public bool AttackTriggered;
         public bool disAllowEarlyTurn;
         public float MaxPressTime;
+        public float AirMomentum;
 
         private float PressTime;
 

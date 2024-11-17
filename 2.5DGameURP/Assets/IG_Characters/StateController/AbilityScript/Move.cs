@@ -14,6 +14,10 @@ namespace IndieGameDev
         [SerializeField] private bool LockTurn180Deg;
         [SerializeField] private bool AllowEarlyTurn;
 
+        [Header("Momentum")]
+        public bool UseMomentum;
+        public float MaxMomentum;
+
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             if (AllowEarlyTurn && !characterControl.AnimProgress.disAllowEarlyTurn)
@@ -29,6 +33,7 @@ namespace IndieGameDev
                 }
             }
             characterControl.AnimProgress.disAllowEarlyTurn = false;
+            characterControl.AnimProgress.AirMomentum = 0f;
         }
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
@@ -38,19 +43,66 @@ namespace IndieGameDev
                 animator.SetBool(TransitionParameters.Jump.ToString(), true);
             }
 
-            if (IsConstantMove)
+            if (UseMomentum)
             {
-                ConstantMove(characterControl, stateInfo);
+                UpdateMomentum(characterControl, stateInfo);
             }
             else
             {
-                ControlledMove(characterControl, animator, stateInfo);
+                if (IsConstantMove)
+                {
+                    ConstantMove(characterControl, stateInfo);
+                }
+                else
+                {
+                    ControlledMove(characterControl, animator, stateInfo);
+                }
             }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
+            characterControl.AnimProgress.AirMomentum = 0f;
+        }
 
+        private void UpdateMomentum(CharacterControl characterControl, AnimatorStateInfo animatorStateInfo)
+        {
+            if (characterControl.MoveRight)
+            {
+                characterControl.AnimProgress.AirMomentum += SpeedGraph.Evaluate(animatorStateInfo.normalizedTime) * Time.deltaTime;
+            }
+
+            if (characterControl.MoveLeft)
+            {
+                characterControl.AnimProgress.AirMomentum -= SpeedGraph.Evaluate(animatorStateInfo.normalizedTime) * Time.deltaTime;
+            }
+
+            if (Mathf.Abs(characterControl.AnimProgress.AirMomentum) >= MaxMomentum)
+            {
+                if (characterControl.AnimProgress.AirMomentum > 0f)
+                {
+                    characterControl.AnimProgress.AirMomentum = MaxMomentum;
+                }
+
+                if (characterControl.AnimProgress.AirMomentum < 0f)
+                {
+                    characterControl.AnimProgress.AirMomentum = -MaxMomentum;
+                }
+            }
+
+            if (characterControl.AnimProgress.AirMomentum > 0f)
+            {
+                characterControl.SetFaceForward(true);
+            }
+            else if (characterControl.AnimProgress.AirMomentum < 0f)
+            {
+                characterControl.SetFaceForward(false);
+            }
+
+            if (!CheckFront(characterControl))
+            {
+                characterControl.MoveAbleCharacter(Speed, Mathf.Abs(characterControl.AnimProgress.AirMomentum));
+            }
         }
 
         private void ConstantMove(CharacterControl characterControl, AnimatorStateInfo stateInfo)
