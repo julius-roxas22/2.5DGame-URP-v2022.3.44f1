@@ -112,9 +112,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &542139769935905580
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -175,6 +175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 0
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &294089319578085114
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,10 +507,7 @@ MonoBehaviour:
   AnimProgress: {fileID: 0}
   NPCAnimProgress: {fileID: 0}
   damageDetector: {fileID: 0}
-  characterColorType: 3
-  movementSpeed: 2
-  skinnedMeshAnimator: {fileID: 2506972086265117665}
-  mat: {fileID: 2100000, guid: 5e6b9a19c6f54444081a7992c254bc3a, type: 2}
+  NPCController: {fileID: 0}
   Jump: 0
   MoveRight: 0
   MoveLeft: 0
@@ -530,12 +529,14 @@ MonoBehaviour:
   - {fileID: 6204637977852673595}
   - {fileID: 4642450666293966700}
   - {fileID: 6828545579492505724}
-  SphereEdgePrefab: {fileID: 1244673664232890433, guid: dfbe63df0d5a5634daaf96484beffb35,
-    type: 3}
   BottomSpheres: []
   FrontSpheres: []
   RightHandAttack: {fileID: 1346636854494439514}
   LeftHandAttack: {fileID: 5145797960510237151}
+  characterColorType: 3
+  movementSpeed: 2
+  skinnedMeshAnimator: {fileID: 2506972086265117665}
+  mat: {fileID: 2100000, guid: 5e6b9a19c6f54444081a7992c254bc3a, type: 2}
 --- !u!114 &3092976030782816588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +580,8 @@ MonoBehaviour:
   AttackTriggered: 0
   disAllowEarlyTurn: 0
   MaxPressTime: 0.1
+  AirMomentum: 0
+  RagdollTriggered: 0
 --- !u!1 &1018023840305489731
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,9 +663,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8640157416725972241
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -723,6 +726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 0
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1039938546548415827
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,9 +877,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8683960049090919891
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -935,6 +940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 0
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1787889983918885695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,9 +1248,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8911302938880825383
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1304,6 +1311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 0
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2854669790221982707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,9 +1460,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &6163809435149069671
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1514,6 +1523,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 3
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3626352736299696163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,9 +1671,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &1814144232121029117
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1723,6 +1734,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 0
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3979541338803106259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,9 +2002,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &5028848467163967648
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2052,6 +2065,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 1
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4522802772273471216
 GameObject:
   m_ObjectHideFlags: 0
@@ -2384,9 +2399,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &1960260130244917867
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2447,6 +2462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 2
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4875636266469986770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,9 +2546,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &7026549971992506874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2546,6 +2563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 0
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4949869435366097066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,9 +2715,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &1635772180313886019
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2759,6 +2778,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 0
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5152794499347466185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,9 +2863,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &8106982393775086560
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2905,6 +2926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 1
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5394347221108119152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,9 +3432,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &3906505187063619896
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3472,6 +3495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 2
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6640437544848261015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,9 +3580,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!144 &317510598203736017
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3618,6 +3643,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollidingParts: []
   BodyPart: 3
+  LastLocalPosition: {x: 0, y: 0, z: 0}
+  LastLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6660566748580427670
 GameObject:
   m_ObjectHideFlags: 0

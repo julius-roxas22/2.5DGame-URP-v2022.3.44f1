@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb497c559ba064a4e894b8bfb409c0d6, type: 3}
   m_Name: Player_Running_Move
   m_EditorClassIdentifier: 
-  BlockDistance: 0.1
+  BlockDistance: 0.5
   SpeedGraph:
     serializedVersion: 2
     m_Curve:
@@ -41,3 +41,5 @@ MonoBehaviour:
   IsConstantMove: 0
   LockTurn180Deg: 1
   AllowEarlyTurn: 1
+  UseMomentum: 0
+  MaxMomentum: 0

@@ -13,6 +13,7 @@ namespace IndieGameDev
         public bool disAllowEarlyTurn;
         public float MaxPressTime;
         public float AirMomentum;
+        public bool RagdollTriggered;
 
         private float PressTime;
 

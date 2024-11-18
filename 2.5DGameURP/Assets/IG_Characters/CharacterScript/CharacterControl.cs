@@ -154,6 +154,9 @@ namespace IndieGameDev
                     {
                         col.isTrigger = true;
                         RagdollParts.Add(col);
+                        col.attachedRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+                        col.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
                         if (null == col.GetComponent<TriggerDetector>())
                         {
                             col.gameObject.AddComponent<TriggerDetector>();
@@ -165,15 +168,34 @@ namespace IndieGameDev
 
         public void TurnOnRagdoll()
         {
-            RIGID_BODY.velocity = Vector3.zero;
+
+            Transform[] transforms = GetComponentsInChildren<Transform>();
+            foreach (Transform t in transforms)
+            {
+                t.gameObject.layer = LayerMask.NameToLayer("DeadBody");
+            }
+
+            foreach (Collider col in RagdollParts)
+            {
+                TriggerDetector det = col.gameObject.GetComponent<TriggerDetector>();
+                det.LastLocalPosition = col.gameObject.transform.localPosition;
+                det.LastLocalRotation = col.gameObject.transform.localRotation;
+            }
+
             RIGID_BODY.useGravity = false;
-            GetComponent<BoxCollider>().enabled = false;
+            RIGID_BODY.velocity = Vector3.zero;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            skinnedMeshAnimator.enabled = false;
             skinnedMeshAnimator.avatar = null;
 
             foreach (Collider col in RagdollParts)
             {
-                col.attachedRigidbody.velocity = Vector3.zero;
                 col.isTrigger = false;
+                col.attachedRigidbody.velocity = Vector3.zero;
+
+                TriggerDetector det = col.gameObject.GetComponent<TriggerDetector>();
+                col.gameObject.transform.localPosition = det.LastLocalPosition;
+                col.gameObject.transform.localRotation = det.LastLocalRotation;
             }
         }
 

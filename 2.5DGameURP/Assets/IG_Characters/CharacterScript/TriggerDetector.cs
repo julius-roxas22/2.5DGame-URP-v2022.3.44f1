@@ -16,6 +16,8 @@ namespace IndieGameDev
         private CharacterControl owner;
         public List<Collider> CollidingParts = new List<Collider>();
         public GeneralBodyParts BodyPart;
+        public Vector3 LastLocalPosition;
+        public Quaternion LastLocalRotation;
 
         private void Awake()
         {

@@ -47,7 +47,10 @@ namespace IndieGameDev
                     next = a;
                 }
             }
-            next.gameObject.SetActive(true);
+            if (null != next)
+            {
+                next.gameObject.SetActive(true);
+            }
         }
     }
 }
