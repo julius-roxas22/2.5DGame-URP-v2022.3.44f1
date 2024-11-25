@@ -36,6 +36,7 @@ namespace IndieGameDev
         public AIProgress NPCAnimProgress;
         public DamageDetector damageDetector;
         public AIController NPCController;
+        public BoxCollider PlayerBoxCollider;
 
         [Header("Input")]
         public bool Jump;
@@ -80,6 +81,7 @@ namespace IndieGameDev
             NPCAnimProgress = GetComponentInChildren<AIProgress>();
             damageDetector = GetComponent<DamageDetector>();
             NPCController = GetComponentInChildren<AIController>();
+            PlayerBoxCollider = GetComponent<BoxCollider>();
 
             bool SwitchBack = false;
 
@@ -155,13 +157,20 @@ namespace IndieGameDev
                         col.isTrigger = true;
                         RagdollParts.Add(col);
                         col.attachedRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
-                        col.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                        col.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
+                        CharacterJoint joint = col.gameObject.GetComponent<CharacterJoint>();
+                        if (null != joint)
+                        {
+                            joint.enableProjection = true;
+                        }
 
                         if (null == col.GetComponent<TriggerDetector>())
                         {
                             col.gameObject.AddComponent<TriggerDetector>();
                         }
                     }
+
                 }
             }
         }
@@ -177,9 +186,9 @@ namespace IndieGameDev
 
             foreach (Collider col in RagdollParts)
             {
-                TriggerDetector det = col.gameObject.GetComponent<TriggerDetector>();
-                det.LastLocalPosition = col.gameObject.transform.localPosition;
-                det.LastLocalRotation = col.gameObject.transform.localRotation;
+                TriggerDetector det = col.GetComponent<TriggerDetector>();
+                det.LastLocalPosition = col.transform.localPosition;
+                det.LastLocalRotation = col.transform.localRotation;
             }
 
             RIGID_BODY.useGravity = false;
@@ -193,9 +202,9 @@ namespace IndieGameDev
                 col.isTrigger = false;
                 col.attachedRigidbody.velocity = Vector3.zero;
 
-                TriggerDetector det = col.gameObject.GetComponent<TriggerDetector>();
-                col.gameObject.transform.localPosition = det.LastLocalPosition;
-                col.gameObject.transform.localRotation = det.LastLocalRotation;
+                TriggerDetector det = col.GetComponent<TriggerDetector>();
+                col.transform.localPosition = det.LastLocalPosition;
+                col.transform.localRotation = det.LastLocalRotation;
             }
         }
 
@@ -212,6 +221,32 @@ namespace IndieGameDev
             return TriggerDetectors;
         }
 
+        public void UpdateTargetSize()
+        {
+            if (!AnimProgress.IsUpdatingBoxCollider)
+            {
+                return;
+            }
+
+            if (Vector3.SqrMagnitude(PlayerBoxCollider.size - AnimProgress.TargetSize) > 0.1f)
+            {
+                PlayerBoxCollider.size = Vector3.Lerp(PlayerBoxCollider.size, AnimProgress.TargetSize, AnimProgress.SizeSpeed * Time.deltaTime);
+            }
+        }
+
+        public void UpdateTargetCenter()
+        {
+            if (!AnimProgress.IsUpdatingBoxCollider)
+            {
+                return;
+            }
+
+            if (Vector3.SqrMagnitude(PlayerBoxCollider.center - AnimProgress.TargetCenter) > 0.1f)
+            {
+                PlayerBoxCollider.center = Vector3.Lerp(PlayerBoxCollider.center, AnimProgress.TargetCenter, AnimProgress.CenterSpeed * Time.deltaTime);
+            }
+        }
+
         private void FixedUpdate()
         {
             if (RIGID_BODY.velocity.y < 0f)
@@ -223,6 +258,9 @@ namespace IndieGameDev
             {
                 RIGID_BODY.velocity -= Vector3.up * PullMultiplier;
             }
+
+            UpdateTargetSize();
+            UpdateTargetCenter();
         }
         private void SetUpSphereEdge()
         {

@@ -19,6 +19,13 @@ namespace IndieGameDev
 
         private CharacterControl characterControl;
 
+        [Header("Update Box Collider")]
+        public bool IsUpdatingBoxCollider;
+        public Vector3 TargetSize;
+        public float SizeSpeed;
+        public Vector3 TargetCenter;
+        public float CenterSpeed;
+
         private void Awake()
         {
             characterControl = GetComponent<CharacterControl>();

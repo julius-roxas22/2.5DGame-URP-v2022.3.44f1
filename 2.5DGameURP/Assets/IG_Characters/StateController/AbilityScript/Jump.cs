@@ -36,7 +36,7 @@ namespace IndieGameDev
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             characterControl.PullMultiplier = 0f;
-            characterControl.AnimProgress.Jumped = false;
+            //characterControl.AnimProgress.Jumped = false;
         }
     }
 }

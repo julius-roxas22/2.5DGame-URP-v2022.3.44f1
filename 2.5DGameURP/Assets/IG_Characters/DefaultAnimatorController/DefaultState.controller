@@ -628,6 +628,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9df893ade97bf1418b1585d5e4fee0e, type: 2}
   - {fileID: 11400000, guid: e63037846aafcc542891cbf956242ae6, type: 2}
   - {fileID: 11400000, guid: 5004ea32b7edd93409f8a03b53422b23, type: 2}
+  - {fileID: 11400000, guid: d82a83676cc065b4694565f9f248a994, type: 2}
 --- !u!1102 &-5689209466074588297
 AnimatorState:
   serializedVersion: 6
@@ -1123,6 +1124,8 @@ MonoBehaviour:
   IsConstantMove: 0
   LockTurn180Deg: 0
   AllowEarlyTurn: 0
+  UseMomentum: 0
+  MaxMomentum: 0
 --- !u!114 &-1102890426429176619
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1140,6 +1143,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc2955afbeff856448b7e3f4a8901f85, type: 2}
   - {fileID: 11400000, guid: b87e4318b7f789845af120fab54bf6b0, type: 2}
   - {fileID: 11400000, guid: 6d423504916c06a40a7b94780393da74, type: 2}
+  - {fileID: 11400000, guid: d82a83676cc065b4694565f9f248a994, type: 2}
 --- !u!1102 &-861247596173773761
 AnimatorState:
   serializedVersion: 6
@@ -2080,6 +2084,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db7a808beced2a44499161ce8b8bad3e, type: 2}
   - {fileID: 11400000, guid: e7cac6016cd724a438a835505784a4cf, type: 2}
   - {fileID: 11400000, guid: 8227fd872484a40438ce9c4ae258ed85, type: 2}
+  - {fileID: 11400000, guid: 32735b8cda8d9e54380e86769f1e923c, type: 2}
 --- !u!114 &4538345148732547603
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2210,7 +2215,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1453867084789895374}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 8999938663379373496}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 1
   m_WriteDefaultValues: 1
@@ -2381,6 +2387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityDatas:
   - {fileID: 11400000, guid: cd8833eada306ef418a6f8b4462b45ee, type: 2}
+  - {fileID: 11400000, guid: d82a83676cc065b4694565f9f248a994, type: 2}
 --- !u!1101 &8393909183853459811
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2448,6 +2455,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &8999938663379373496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c73cb0d71fed14ba544b580406284c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityDatas:
+  - {fileID: 11400000, guid: d82a83676cc065b4694565f9f248a994, type: 2}
 --- !u!1102 &9062058788128051364
 AnimatorState:
   serializedVersion: 6

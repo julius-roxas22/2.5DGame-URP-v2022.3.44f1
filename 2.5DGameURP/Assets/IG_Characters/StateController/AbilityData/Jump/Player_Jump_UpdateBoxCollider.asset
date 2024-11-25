@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a3d5f2b996a3e47af00b0bd18c7f51, type: 3}
-  m_Name: Death_FallingBack_RagdollTrigger
+  m_Script: {fileID: 11500000, guid: f7f253b5f9ec2134cb12d1764fc464de, type: 3}
+  m_Name: Player_Jump_UpdateBoxCollider
   m_EditorClassIdentifier: 
-  TriggerTiming: 0.375
+  TargetSize: {x: 0.47, y: 1.22, z: 0.57}
+  SizeSpeed: 10
+  TargetCenter: {x: 1, y: 1.42, z: 0.01762626}
+  CenterSpeed: 10

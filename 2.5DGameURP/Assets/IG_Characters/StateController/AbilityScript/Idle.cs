@@ -32,7 +32,14 @@ namespace IndieGameDev
 
             if (characterControl.Jump)
             {
-                animator.SetBool(TransitionParameters.Jump.ToString(), true);
+                if (!characterControl.AnimProgress.Jumped)
+                {
+                    animator.SetBool(TransitionParameters.Jump.ToString(), true);
+                }
+            }
+            else
+            {
+                characterControl.AnimProgress.Jumped = false;
             }
 
             if (characterControl.MoveRight)
