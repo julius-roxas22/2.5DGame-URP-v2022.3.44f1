@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f253b5f9ec2134cb12d1764fc464de, type: 3}
   m_Name: Player_Jump_UpdateBoxCollider
   m_EditorClassIdentifier: 
-  TargetSize: {x: 0.47, y: 1.22, z: 0.57}
-  SizeSpeed: 10
-  TargetCenter: {x: 1, y: 1.42, z: 0.01762626}
-  CenterSpeed: 10
+  TargetSize: {x: 0.808, y: 0.9, z: 0.5}
+  SizeSpeed: 500
+  TargetCenter: {x: 0, y: 1.3, z: 0}
+  CenterSpeed: 5000

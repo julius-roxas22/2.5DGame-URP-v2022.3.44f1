@@ -10,6 +10,7 @@ namespace IndieGameDev
         [SerializeField] private bool OnEnabled;
         [SerializeField] private bool OnStart;
         [SerializeField] private bool OnEnd;
+        [Space(10)] public bool IsRepositionSpheres;
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
             if (OnStart)
@@ -28,6 +29,12 @@ namespace IndieGameDev
             if (OnEnd)
             {
                 characterControl.GetComponent<BoxCollider>().enabled = OnEnabled;
+            }
+
+            if (IsRepositionSpheres)
+            {
+                characterControl.RepositionSpheres("front");
+                characterControl.RepositionSpheres("bottom");
             }
         }
     }

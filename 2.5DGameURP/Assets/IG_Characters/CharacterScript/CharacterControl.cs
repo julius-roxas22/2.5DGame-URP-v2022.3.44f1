@@ -61,6 +61,7 @@ namespace IndieGameDev
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
         private Dictionary<string, GameObject> ParentObjDictionaries = new Dictionary<string, GameObject>();
         private Rigidbody rigid;
+        private ContactPoint[] ContactPoints;
 
         public Rigidbody RIGID_BODY
         {
@@ -83,21 +84,7 @@ namespace IndieGameDev
             NPCController = GetComponentInChildren<AIController>();
             PlayerBoxCollider = GetComponent<BoxCollider>();
 
-            bool SwitchBack = false;
-
-            if (!IsFacingForward())
-            {
-                SwitchBack = true;
-            }
-
-            SetFaceForward(true);
-
             SetUpSphereEdge();
-
-            if (SwitchBack)
-            {
-                SetFaceForward(false);
-            }
 
             RegisterCharacter();
         }
@@ -231,6 +218,7 @@ namespace IndieGameDev
             if (Vector3.SqrMagnitude(PlayerBoxCollider.size - AnimProgress.TargetSize) > 0.1f)
             {
                 PlayerBoxCollider.size = Vector3.Lerp(PlayerBoxCollider.size, AnimProgress.TargetSize, AnimProgress.SizeSpeed * Time.deltaTime);
+                AnimProgress.IsUpdatingSpheres = true;
             }
         }
 
@@ -244,6 +232,7 @@ namespace IndieGameDev
             if (Vector3.SqrMagnitude(PlayerBoxCollider.center - AnimProgress.TargetCenter) > 0.1f)
             {
                 PlayerBoxCollider.center = Vector3.Lerp(PlayerBoxCollider.center, AnimProgress.TargetCenter, AnimProgress.CenterSpeed * Time.deltaTime);
+                AnimProgress.IsUpdatingSpheres = true;
             }
         }
 
@@ -258,44 +247,72 @@ namespace IndieGameDev
             {
                 RIGID_BODY.velocity -= Vector3.up * PullMultiplier;
             }
-
+            AnimProgress.IsUpdatingSpheres = false;
             UpdateTargetSize();
             UpdateTargetCenter();
+
+            if (AnimProgress.IsUpdatingSpheres)
+            {
+                RepositionSpheres("front");
+                RepositionSpheres("bottom");
+            }
+
         }
         private void SetUpSphereEdge()
         {
-            BoxCollider box = GetComponent<BoxCollider>();
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject obj = CreatePrefabSphereEdge(Vector3.zero);
+                FrontSpheres.Add(obj);
+            }
 
-            float bottom = box.bounds.center.y - box.bounds.extents.y;
-            float top = box.bounds.center.y + box.bounds.extents.y;
-            float front = box.bounds.center.z + box.bounds.extents.z;
-            float back = box.bounds.center.z - box.bounds.extents.z;
+            RepositionSpheres("front");
 
-            GameObject bottomFrontVer = CreatePrefabSphereEdge(new Vector3(0f, bottom + 0.05f, front));
-            GameObject bottomFrontHor = CreatePrefabSphereEdge(new Vector3(0f, bottom, front));
-            GameObject bottomBack = CreatePrefabSphereEdge(new Vector3(0f, bottom, back));
-            GameObject topFront = CreatePrefabSphereEdge(new Vector3(0f, top, front));
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject obj = CreatePrefabSphereEdge(Vector3.zero);
+                BottomSpheres.Add(obj);
+            }
 
-            BottomSpheres.Add(bottomFrontHor);
-            BottomSpheres.Add(bottomBack);
+            RepositionSpheres("bottom");
 
-            FrontSpheres.Add(bottomFrontVer);
-            FrontSpheres.Add(topFront);
-
-            float horSphereSection = (bottomBack.transform.position - bottomFrontHor.transform.position).magnitude / 5f;
-            CreatePrefabSphereEdge(bottomBack, transform.forward, horSphereSection, 4, BottomSpheres);
-
-            float verSphereSection = (bottomFrontVer.transform.position - topFront.transform.position).magnitude / 10f;
-            CreatePrefabSphereEdge(bottomFrontVer, transform.up, verSphereSection, 9, FrontSpheres);
         }
 
-        private void CreatePrefabSphereEdge(GameObject start, Vector3 direction, float section, int iteration, List<GameObject> spheres)
+        public void RepositionSpheres(string directionType)
         {
-            for (int i = 0; i < iteration; i++)
+            float bottom = PlayerBoxCollider.bounds.center.y - PlayerBoxCollider.bounds.extents.y;
+            float top = PlayerBoxCollider.bounds.center.y + PlayerBoxCollider.bounds.extents.y;
+            float front = PlayerBoxCollider.bounds.center.z + PlayerBoxCollider.bounds.extents.z;
+            float back = PlayerBoxCollider.bounds.center.z - PlayerBoxCollider.bounds.extents.z;
+
+            switch (directionType)
             {
-                Vector3 position = start.transform.position + (direction * section * (i + 1));
-                GameObject obj = CreatePrefabSphereEdge(position);
-                spheres.Add(obj);
+                case "front":
+                    {
+                        FrontSpheres[0].transform.localPosition = new Vector3(0f, bottom + 0.05f, front) - transform.position;
+                        FrontSpheres[1].transform.localPosition = new Vector3(0f, top, front) - transform.position;
+
+                        float interval = (top - bottom + 0.05f) / 9;
+
+                        for (int i = 1; i < FrontSpheres.Count; i++)
+                        {
+                            FrontSpheres[i].transform.localPosition = new Vector3(0f, bottom + (interval * i), front) - transform.position;
+                        }
+                        break;
+                    }
+                case "bottom":
+                    {
+                        BottomSpheres[0].transform.localPosition = new Vector3(0, bottom, back) - transform.position;
+                        BottomSpheres[1].transform.localPosition = new Vector3(0, bottom, front) - transform.position;
+
+                        float interval = (front - back) / 4;
+
+                        for (int i = 1; i < BottomSpheres.Count; i++)
+                        {
+                            BottomSpheres[i].transform.localPosition = new Vector3(0f, bottom, back + (interval * i)) - transform.position;
+                        }
+                        break;
+                    }
             }
         }
 
@@ -325,6 +342,11 @@ namespace IndieGameDev
                     r.material = mat;
                 }
             }
+        }
+
+        private void OnCollisionStay(Collision collision)
+        {
+            ContactPoints = collision.contacts;
         }
 
         public void SetFaceForward(bool isFacing)

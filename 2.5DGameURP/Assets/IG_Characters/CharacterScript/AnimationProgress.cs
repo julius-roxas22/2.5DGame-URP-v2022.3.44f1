@@ -21,6 +21,7 @@ namespace IndieGameDev
 
         [Header("Update Box Collider")]
         public bool IsUpdatingBoxCollider;
+        public bool IsUpdatingSpheres;
         public Vector3 TargetSize;
         public float SizeSpeed;
         public Vector3 TargetCenter;
