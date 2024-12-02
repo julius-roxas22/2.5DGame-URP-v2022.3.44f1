@@ -61,7 +61,7 @@ namespace IndieGameDev
         private List<TriggerDetector> TriggerDetectors = new List<TriggerDetector>();
         private Dictionary<string, GameObject> ParentObjDictionaries = new Dictionary<string, GameObject>();
         private Rigidbody rigid;
-        private ContactPoint[] ContactPoints;
+        public ContactPoint[] ContactPoints;
 
         public Rigidbody RIGID_BODY
         {
@@ -280,10 +280,10 @@ namespace IndieGameDev
 
         public void RepositionSpheres(string directionType)
         {
-            float bottom = PlayerBoxCollider.bounds.center.y - PlayerBoxCollider.bounds.extents.y;
-            float top = PlayerBoxCollider.bounds.center.y + PlayerBoxCollider.bounds.extents.y;
-            float front = PlayerBoxCollider.bounds.center.z + PlayerBoxCollider.bounds.extents.z;
-            float back = PlayerBoxCollider.bounds.center.z - PlayerBoxCollider.bounds.extents.z;
+            float bottom = PlayerBoxCollider.bounds.center.y - PlayerBoxCollider.bounds.size.y / 2f;
+            float top = PlayerBoxCollider.bounds.center.y + PlayerBoxCollider.bounds.size.y / 2f;
+            float front = PlayerBoxCollider.bounds.center.z + PlayerBoxCollider.bounds.size.z / 2f;
+            float back = PlayerBoxCollider.bounds.center.z - PlayerBoxCollider.bounds.size.z / 2f;
 
             switch (directionType)
             {
