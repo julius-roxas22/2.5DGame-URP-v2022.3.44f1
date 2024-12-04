@@ -7,10 +7,11 @@ namespace IndieGameDev
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/UpdateBoxCollider")]
     public class UpdateBoxCollider : StateData
     {
-        public Vector3 TargetSize;
-        public float SizeSpeed;
         public Vector3 TargetCenter;
         public float CenterSpeed;
+        [Space(10)]
+        public Vector3 TargetSize;
+        public float SizeSpeed;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
