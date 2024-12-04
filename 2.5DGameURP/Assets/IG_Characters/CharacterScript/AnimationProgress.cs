@@ -12,11 +12,13 @@ namespace IndieGameDev
         public bool AttackTriggered;
         public bool disAllowEarlyTurn;
         public float MaxPressTime;
-        public float AirMomentum;
         public bool RagdollTriggered;
 
-        private float PressTime;
+        [Header("Air Control")]
+        public float AirMomentum;
+        public bool FrameUpdated;
 
+        private float PressTime;
         private CharacterControl characterControl;
 
         [Header("Update Box Collider")]
@@ -56,6 +58,11 @@ namespace IndieGameDev
             {
                 AttackTriggered = true;
             }
+        }
+
+        private void LateUpdate()
+        {
+            FrameUpdated = false;
         }
     }
 }

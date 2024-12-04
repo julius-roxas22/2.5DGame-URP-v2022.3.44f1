@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb497c559ba064a4e894b8bfb409c0d6, type: 3}
-  m_Name: Player_Jump_Move
+  m_Name: Player_Running_Jump (Move Forward - Fall)
   m_EditorClassIdentifier: 
-  BlockDistance: 0.1
+  BlockDistance: 0.5
   SpeedGraph:
     serializedVersion: 2
     m_Curve:
@@ -41,7 +41,7 @@ MonoBehaviour:
   IsConstantMove: 0
   LockTurn180Deg: 0
   AllowEarlyTurn: 0
-  StartingMomentum: 1.5
+  StartingMomentum: 0
   UseMomentum: 1
-  MaxMomentum: 1
+  MaxMomentum: 3
   ClearMomentumOnExit: 1

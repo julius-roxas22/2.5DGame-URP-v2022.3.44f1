@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace IndieGameDev
 {
-    [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/AI_Ability/NPCJump")]
+    [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/AI_Ability/NPCJumpState")]
     public class NPCJump : StateData
     {
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)

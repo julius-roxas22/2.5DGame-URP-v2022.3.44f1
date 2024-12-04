@@ -16,7 +16,9 @@ namespace IndieGameDev
 
         [Header("Momentum")]
         public bool UseMomentum;
+        public float StartingMomentum;
         public float MaxMomentum;
+        public bool ClearMomentumOnExit;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -33,7 +35,19 @@ namespace IndieGameDev
                 }
             }
             characterControl.AnimProgress.disAllowEarlyTurn = false;
-            characterControl.AnimProgress.AirMomentum = 0f;
+            //characterControl.AnimProgress.AirMomentum = 0f;
+
+            if (StartingMomentum > 0.001f)
+            {
+                if (characterControl.IsFacingForward())
+                {
+                    characterControl.AnimProgress.AirMomentum = StartingMomentum;
+                }
+                else
+                {
+                    characterControl.AnimProgress.AirMomentum = -StartingMomentum;
+                }
+            }
         }
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
@@ -62,19 +76,29 @@ namespace IndieGameDev
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            characterControl.AnimProgress.AirMomentum = 0f;
+            if (ClearMomentumOnExit)
+            {
+                characterControl.AnimProgress.AirMomentum = 0f;
+            }
         }
 
         private void UpdateMomentum(CharacterControl characterControl, AnimatorStateInfo animatorStateInfo)
         {
+            if (characterControl.AnimProgress.FrameUpdated)
+            {
+                return;
+            }
+
+            characterControl.AnimProgress.FrameUpdated = true;
+
             if (characterControl.MoveRight)
             {
-                characterControl.AnimProgress.AirMomentum += SpeedGraph.Evaluate(animatorStateInfo.normalizedTime) * Time.deltaTime;
+                characterControl.AnimProgress.AirMomentum += SpeedGraph.Evaluate(animatorStateInfo.normalizedTime) * Speed * Time.deltaTime;
             }
 
             if (characterControl.MoveLeft)
             {
-                characterControl.AnimProgress.AirMomentum -= SpeedGraph.Evaluate(animatorStateInfo.normalizedTime) * Time.deltaTime;
+                characterControl.AnimProgress.AirMomentum -= SpeedGraph.Evaluate(animatorStateInfo.normalizedTime) * Speed * Time.deltaTime;
             }
 
             if (Mathf.Abs(characterControl.AnimProgress.AirMomentum) >= MaxMomentum)

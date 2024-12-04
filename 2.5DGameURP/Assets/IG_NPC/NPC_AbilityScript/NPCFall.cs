@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace IndieGameDev
 {
-    [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/AI_Ability/NPCFall")]
+    [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/AI_Ability/NPCFallState")]
     public class NPCFall : StateData
     {
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
