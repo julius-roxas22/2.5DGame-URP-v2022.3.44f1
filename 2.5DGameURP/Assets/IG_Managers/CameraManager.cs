@@ -15,7 +15,7 @@ namespace IndieGameDev
         {
             get
             {
-                if(null == MainCamera)
+                if (null == MainCamera)
                 {
                     MainCamera = FindObjectOfType<Camera>();
                 }
@@ -44,7 +44,7 @@ namespace IndieGameDev
 
         public void ShakeCamera(float duration)
         {
-            if(null != routine)
+            if (null != routine)
             {
                 StopCoroutine(routine);
             }

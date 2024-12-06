@@ -5,7 +5,7 @@ using UnityEngine;
 namespace IndieGameDev
 {
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/GrounDetector")]
-    public class GroundDEtector : StateData
+    public class GroundDetector : StateData
     {
         [Range(0.01f, 1)]
         public float CheckTime;

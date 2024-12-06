@@ -12,6 +12,8 @@ namespace IndieGameDev
         [Space(10)]
         public Vector3 TargetSize;
         public float SizeSpeed;
+        [Space(10)]
+        public bool KeepUpdating;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -30,7 +32,10 @@ namespace IndieGameDev
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            characterControl.AnimProgress.IsUpdatingBoxCollider = false;
+            if (!KeepUpdating)
+            {
+                characterControl.AnimProgress.IsUpdatingBoxCollider = false;
+            }
         }
     }
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   CenterSpeed: 500
   TargetSize: {x: 0.808, y: 0.9, z: 0.5}
   SizeSpeed: 500
+  KeepUpdating: 1
