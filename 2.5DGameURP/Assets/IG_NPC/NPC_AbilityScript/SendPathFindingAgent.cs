@@ -20,6 +20,8 @@ namespace IndieGameDev
             PathFindingAgent agent = characterControl.NPCAnimProgress.agent;
             agent.GetComponent<NavMeshAgent>().enabled = false;
             agent.transform.position = characterControl.transform.position;
+            characterControl.navMeshObstacle.carving = false;
+            agent.owner = characterControl;
             agent.GoToDistination();
         }
 

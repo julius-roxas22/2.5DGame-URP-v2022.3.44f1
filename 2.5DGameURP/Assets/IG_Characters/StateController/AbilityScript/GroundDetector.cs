@@ -38,16 +38,16 @@ namespace IndieGameDev
 
         bool IsGrounded(CharacterControl control)
         {
-            if (control.RIGID_BODY.velocity.y <= 0.00f && control.RIGID_BODY.velocity.y > -0.001f)
+            if (null != control.ContactPoints)
             {
                 foreach (ContactPoint c in control.ContactPoints)
                 {
-                    if (null != c.point)
-                    {
-                        float colliderBottom = (control.transform.position.y + control.PlayerBoxCollider.center.y) - (control.PlayerBoxCollider.size.y / 2f);
-                        float yDiff = Mathf.Abs(colliderBottom - c.point.y);
+                    float colliderBottom = (control.transform.position.y + control.PlayerBoxCollider.center.y) - (control.PlayerBoxCollider.size.y / 2f);
+                    float yDiff = Mathf.Abs(colliderBottom - c.point.y);
 
-                        if (yDiff < 0.01f)
+                    if (yDiff < 0.01f)
+                    {
+                        if (Mathf.Abs(control.RIGID_BODY.velocity.y) < 0.001f)
                         {
                             return true;
                         }

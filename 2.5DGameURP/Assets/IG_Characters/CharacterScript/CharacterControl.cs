@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace IndieGameDev
 {
@@ -37,6 +38,7 @@ namespace IndieGameDev
         public DamageDetector damageDetector;
         public AIController NPCController;
         public BoxCollider PlayerBoxCollider;
+        public NavMeshObstacle navMeshObstacle;
 
         [Header("Input")]
         public bool Jump;
@@ -83,6 +85,7 @@ namespace IndieGameDev
             damageDetector = GetComponent<DamageDetector>();
             NPCController = GetComponentInChildren<AIController>();
             PlayerBoxCollider = GetComponent<BoxCollider>();
+            navMeshObstacle = GetComponent<NavMeshObstacle>();
 
             SetUpSphereEdge();
 
@@ -157,7 +160,6 @@ namespace IndieGameDev
                             col.gameObject.AddComponent<TriggerDetector>();
                         }
                     }
-
                 }
             }
         }

@@ -427,9 +427,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &4678670962539022323
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -509,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2024290126244919432
 Transform:
   m_ObjectHideFlags: 0
@@ -804,9 +804,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &6083146324817880036
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -984,9 +984,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &993822540984382729
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1292,9 +1292,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &1408864773142813553
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1440,9 +1440,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &3767147450403984093
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1522,7 +1522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8897993847758547426
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,9 +1815,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &1030470198026553039
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2094,6 +2094,7 @@ GameObject:
   - component: {fileID: 8724351413152493127}
   - component: {fileID: 2209552278515335702}
   - component: {fileID: 7813680774261959296}
+  - component: {fileID: 7199969774472305493}
   m_Layer: 3
   m_Name: yBot - Green
   m_TagString: Untagged
@@ -2187,6 +2188,7 @@ MonoBehaviour:
   NPCAnimProgress: {fileID: 0}
   damageDetector: {fileID: 0}
   NPCController: {fileID: 0}
+  PlayerBoxCollider: {fileID: 0}
   Jump: 0
   MoveRight: 0
   MoveLeft: 0
@@ -2259,8 +2261,31 @@ MonoBehaviour:
   AttackTriggered: 0
   disAllowEarlyTurn: 0
   MaxPressTime: 0.1
-  AirMomentum: 0
   RagdollTriggered: 0
+  AirMomentum: 0
+  FrameUpdated: 0
+  IsUpdatingBoxCollider: 0
+  IsUpdatingSpheres: 0
+  TargetSize: {x: 0, y: 0, z: 0}
+  SizeSpeed: 0
+  TargetCenter: {x: 0, y: 0, z: 0}
+  CenterSpeed: 0
+--- !u!208 &7199969774472305493
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848389427349401314}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.75, y: 0.265, z: 0.005}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3952535394121580323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,9 +2495,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &197351229194505945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2701,9 +2726,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &5281656427173247007
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2783,7 +2808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6968048875400917275
 Transform:
   m_ObjectHideFlags: 0
@@ -3356,9 +3381,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &7226197604738004311
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3600,9 +3625,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &3281478732536567291
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -4003,9 +4028,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &9014436115364959481
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -4214,9 +4239,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &5743840373018897342
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -4395,9 +4420,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!144 &313029462495848310
 CharacterJoint:
   m_ObjectHideFlags: 0
