@@ -19,15 +19,17 @@ namespace IndieGameDev
             {
                 if (!characterControl.AnimProgress.RagdollTriggered)
                 {
-                    characterControl.TurnOnRagdoll();
-                    characterControl.AnimProgress.RagdollTriggered = true;
+                    if (characterControl.skinnedMeshAnimator.enabled)
+                    {
+                        characterControl.AnimProgress.RagdollTriggered = true;
+                    }
                 }
             }
         }
 
         public override void OnExitAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-            characterControl.AnimProgress.RagdollTriggered = false;
+
         }
     }
 }

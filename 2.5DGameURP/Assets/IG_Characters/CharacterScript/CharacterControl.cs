@@ -189,11 +189,12 @@ namespace IndieGameDev
             foreach (Collider col in RagdollParts)
             {
                 col.isTrigger = false;
-                col.attachedRigidbody.velocity = Vector3.zero;
 
                 TriggerDetector det = col.GetComponent<TriggerDetector>();
                 col.transform.localPosition = det.LastLocalPosition;
                 col.transform.localRotation = det.LastLocalRotation;
+
+                col.attachedRigidbody.velocity = Vector3.zero;
             }
         }
 
@@ -257,6 +258,12 @@ namespace IndieGameDev
             {
                 RepositionSpheres("front");
                 RepositionSpheres("bottom");
+            }
+
+            if (AnimProgress.RagdollTriggered)
+            {
+                TurnOnRagdoll();
+                AnimProgress.RagdollTriggered = false;
             }
 
         }

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameSettings: {fileID: 11400000, guid: 55e7767604807cb4aab4a919909aba87, type: 2}
+  physicsSettings: {fileID: 11400000, guid: d21415ffac757904fa617cabe99a40b5, type: 2}

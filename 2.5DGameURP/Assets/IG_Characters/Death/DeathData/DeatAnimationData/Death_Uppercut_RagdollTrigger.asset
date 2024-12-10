@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a3d5f2b996a3e47af00b0bd18c7f51, type: 3}
   m_Name: Death_Uppercut_RagdollTrigger
   m_EditorClassIdentifier: 
-  TriggerTiming: 0.32
+  TriggerTiming: 0.27

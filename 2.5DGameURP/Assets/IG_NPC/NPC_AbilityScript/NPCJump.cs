@@ -38,7 +38,7 @@ namespace IndieGameDev
 
             float bottomDist = characterControl.NPCAnimProgress.agent.EndSphere.transform.position.y - characterControl.FrontSpheres[0].transform.position.y;
 
-            if (topDist < 1.5f && bottomDist > 1f)
+            if (topDist < 0.5f && bottomDist > 1f)
             {
                 if (characterControl.IsFacingForward())
                 {
@@ -52,7 +52,7 @@ namespace IndieGameDev
                 }
             }
 
-            if (bottomDist < 1f)
+            if (bottomDist < 0.5f)
             {
                 characterControl.MoveRight = false;
                 characterControl.MoveLeft = false;
