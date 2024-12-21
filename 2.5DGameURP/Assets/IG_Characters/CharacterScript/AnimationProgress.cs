@@ -10,13 +10,17 @@ namespace IndieGameDev
         public bool CameraShaken;
         public List<PoolObjectType> PoolObjectList = new List<PoolObjectType>();
         public bool AttackTriggered;
-        public bool disAllowEarlyTurn;
         public float MaxPressTime;
         public bool RagdollTriggered;
+
+        [Header("GroundMovement")]
+        public bool disAllowEarlyTurn;
+        public bool LockDirectionNextState;
 
         [Header("Air Control")]
         public float AirMomentum;
         public bool FrameUpdated;
+        public bool CancelPull;
 
         private float PressTime;
         private CharacterControl characterControl;

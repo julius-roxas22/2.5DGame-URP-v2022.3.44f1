@@ -13,6 +13,7 @@ namespace IndieGameDev
         [SerializeField] private bool IsConstantMove;
         [SerializeField] private bool LockTurn180Deg;
         [SerializeField] private bool AllowEarlyTurn;
+        public bool LockDirectionNextState;
 
         [Header("Momentum")]
         public bool UseMomentum;
@@ -24,18 +25,25 @@ namespace IndieGameDev
         {
             if (AllowEarlyTurn && !characterControl.AnimProgress.disAllowEarlyTurn)
             {
-                if (characterControl.MoveLeft)
+                if (!characterControl.AnimProgress.LockDirectionNextState)
                 {
-                    characterControl.SetFaceForward(false);
+                    if (characterControl.MoveLeft)
+                    {
+                        characterControl.SetFaceForward(false);
+                    }
+
+                    if (characterControl.MoveRight)
+                    {
+                        characterControl.SetFaceForward(true);
+                    }
+                }
+                else
+                {
+                    characterControl.AnimProgress.LockDirectionNextState = false;
                 }
 
-                if (characterControl.MoveRight)
-                {
-                    characterControl.SetFaceForward(true);
-                }
             }
             characterControl.AnimProgress.disAllowEarlyTurn = false;
-            //characterControl.AnimProgress.AirMomentum = 0f;
 
             if (StartingMomentum > 0.001f)
             {
@@ -52,6 +60,15 @@ namespace IndieGameDev
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
+            characterControl.AnimProgress.LockDirectionNextState = LockDirectionNextState;
+
+            if (characterControl.AnimProgress.FrameUpdated)
+            {
+                return;
+            }
+
+            characterControl.AnimProgress.FrameUpdated = true;
+
             if (characterControl.Jump)
             {
                 animator.SetBool(TransitionParameters.Jump.ToString(), true);
@@ -84,13 +101,6 @@ namespace IndieGameDev
 
         private void UpdateMomentum(CharacterControl characterControl, AnimatorStateInfo animatorStateInfo)
         {
-            if (characterControl.AnimProgress.FrameUpdated)
-            {
-                return;
-            }
-
-            characterControl.AnimProgress.FrameUpdated = true;
-
             if (characterControl.MoveRight)
             {
                 characterControl.AnimProgress.AirMomentum += SpeedGraph.Evaluate(animatorStateInfo.normalizedTime) * Speed * Time.deltaTime;

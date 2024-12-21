@@ -13,6 +13,7 @@ namespace IndieGameDev
         JUMP,
         ATTACK,
         LEDGE_GRAB,
+        LEFT_OR_RIGHT
     }
 
     [CreateAssetMenu(fileName = "New Ability", menuName = "IndieGameDev/Ability/TransitionIndexer")]
@@ -102,6 +103,14 @@ namespace IndieGameDev
                     case TransitionConditionType.LEDGE_GRAB:
                         {
                             if (!characterControl.ledgeChecker.IsGrabbingLedge)
+                            {
+                                return false;
+                            }
+                        }
+                        break;
+                    case TransitionConditionType.LEFT_OR_RIGHT:
+                        {
+                            if (!characterControl.MoveLeft && !characterControl.MoveRight)
                             {
                                 return false;
                             }

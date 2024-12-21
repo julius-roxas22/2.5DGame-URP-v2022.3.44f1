@@ -9,18 +9,22 @@ namespace IndieGameDev
     {
         [Range(0f, 1f)]
         [SerializeField] private float JumpTiming;
-        [SerializeField] private AnimationCurve PullMultiplierGraph;
         [SerializeField] private float jumpForce;
+
+        [Header("Extra Gravity")]
+        [SerializeField] private AnimationCurve PullMultiplierGraph;
+        public bool CancelPull;
 
         public override void OnEnterAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)
         {
-
+            characterControl.AnimProgress.Jumped = false;
             if (JumpTiming == 0f)
             {
                 characterControl.RIGID_BODY.AddForce(Vector3.up * jumpForce);
                 characterControl.AnimProgress.Jumped = true;
             }
             animator.SetBool(TransitionParameters.Grounded.ToString(), false);
+            characterControl.AnimProgress.CancelPull = CancelPull;
         }
 
         public override void OnUpdateAbility(CharacterControl characterControl, Animator animator, AnimatorStateInfo stateInfo)

@@ -1153,6 +1153,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: yBot - Green
       objectReference: {fileID: 0}
+    - target: {fileID: 3848389427349401314, guid: fa5ed926134c77342a2c04d275d3a9c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7199969774472305493, guid: fa5ed926134c77342a2c04d275d3a9c6,
         type: 3}
       propertyPath: m_CarveOnlyStationary
@@ -2194,7 +2199,7 @@ PrefabInstance:
     - target: {fileID: 3848389427349401314, guid: fa5ed926134c77342a2c04d275d3a9c6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3952535394121580323, guid: fa5ed926134c77342a2c04d275d3a9c6,
         type: 3}
